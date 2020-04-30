@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.5925266903914591" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="564.0" prefWidth="1037.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControlDonantes">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="414.0" prefWidth="1035.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutY="8.0" prefHeight="43.0" prefWidth="1035.0" text="DONANTES" textFill="#ee2525" underline="true">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="78.0" text="Num_Donante" />
+            <TextField layoutX="108.0" layoutY="74.0" />
+            <Label layoutX="22.0" layoutY="115.0" text="Nombre" />
+            <Label layoutX="22.0" layoutY="152.0" text="Apellido1" />
+            <Label layoutX="22.0" layoutY="187.0" text="Apellido2" />
+            <Label layoutX="22.0" layoutY="223.0" text="Ciclo" />
+            <Label layoutX="22.0" layoutY="260.0" text="DNI" />
+            <Label layoutX="22.0" layoutY="298.0" text="Fecha nac" />
+            <TextField layoutX="108.0" layoutY="111.0" />
+            <TextField layoutX="108.0" layoutY="148.0" />
+            <TextField layoutX="108.0" layoutY="183.0" />
+            <TextField layoutX="108.0" layoutY="256.0" />
+            <Label layoutX="382.0" layoutY="78.0" text="Pais Nac" />
+            <Label layoutX="382.0" layoutY="115.0" text="Dirección" />
+            <Label layoutX="382.0" layoutY="152.0" text="Población" />
+            <Label layoutX="382.0" layoutY="187.0" text="Cod_Postal" />
+            <Label layoutX="382.0" layoutY="223.0" text="TLFN1" />
+            <Label layoutX="382.0" layoutY="260.0" text="TLFN2" />
+            <Label layoutX="343.0" layoutY="298.0" text="Correo Electronico" />
+            <TextField layoutX="453.0" layoutY="74.0" />
+            <TextField layoutX="453.0" layoutY="111.0" />
+            <TextField layoutX="453.0" layoutY="148.0" />
+            <TextField layoutX="453.0" layoutY="183.0" />
+            <TextField layoutX="453.0" layoutY="219.0" />
+            <TextField layoutX="453.0" layoutY="256.0" />
+            <TextField layoutX="453.0" layoutY="294.0" />
+            <Label layoutX="660.0" layoutY="128.0" text="Sexo:" />
+            <RadioButton layoutX="705.0" layoutY="115.0" mnemonicParsing="false" text="Hombre">
+               <toggleGroup>
+                  <ToggleGroup fx:id="Sexo" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="705.0" layoutY="144.0" mnemonicParsing="false" text="Mujer" toggleGroup="$Sexo" />
+            <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" text="VOLVER" textFill="#145aa6" />
+            <Button layoutX="839.0" layoutY="14.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="149.0" text="GUARDAR" textFill="#408a22">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="839.0" layoutY="92.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="149.0" text="ELIMINAR" textFill="#e80b0b">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button layoutX="839.0" layoutY="169.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="149.0" text="RESET" textFill="#ff0d00">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Label layoutX="658.0" layoutY="238.0" text="FOTO:" />
+            <Button layoutX="839.0" layoutY="246.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="149.0" text="EDITAR" textFill="#254aa1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ComboBox layoutX="108.0" layoutY="216.0" prefWidth="150.0" />
+            <DatePicker layoutX="108.0" layoutY="294.0" />
+            <ImageView fitHeight="107.0" fitWidth="98.0" layoutX="705.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" />
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="275.0" prefWidth="1035.0">
+         <children>
+            <TableView layoutX="-1.0" layoutY="-2.0" prefHeight="227.0" prefWidth="1037.0">
+              <columns>
+                  <TableColumn minWidth="0.0" prefWidth="64.0" text="Nº Donante" />
+                <TableColumn prefWidth="58.0" text="Nombre" />
+                <TableColumn minWidth="0.0" prefWidth="78.0" text="Apellido1" />
+                  <TableColumn prefWidth="61.0" text="Apellido2" />
+                  <TableColumn minWidth="0.0" prefWidth="37.0" text="Ciclo" />
+                  <TableColumn prefWidth="61.0" text="DNI" />
+                  <TableColumn prefWidth="73.0" text="Fecha Nac" />
+                  <TableColumn prefWidth="61.0" text="Pais Nac" />
+                  <TableColumn prefWidth="98.0" text="Dirección" />
+                  <TableColumn prefWidth="69.0" text="Población" />
+                  <TableColumn prefWidth="71.0" text="Cod Postal" />
+                  <TableColumn minWidth="5.0" prefWidth="76.0" text="TLFN1" />
+                  <TableColumn minWidth="5.0" prefWidth="59.0" text="TLFN2" />
+                  <TableColumn prefWidth="122.0" text="Correo Electronico" />
+                  <TableColumn prefWidth="48.0" text="Sexo" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+  </items>
+</SplitPane>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControlPaginaInformes">
+   <children>
+      <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" text="VOLVER" textFill="#145aa6" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="1.0" prefHeight="53.0" prefWidth="600.0" text="INFORMES" textFill="#4a53ff" underline="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="241.0" layoutY="92.0" prefHeight="34.0" prefWidth="120.0" text="CAMPO A BUSCAR:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="34.0" layoutY="185.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="131.0" text="DONANTES" textFill="#eb1919" />
+      <Button layoutX="236.0" layoutY="185.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="131.0" text="DONACIONES" textFill="#358a19" />
+      <Button layoutX="435.0" layoutY="185.0" mnemonicParsing="false" prefHeight="78.0" prefWidth="131.0" text="FORMULARIOS" textFill="#4d2121" />
+   </children>
+</AnchorPane>

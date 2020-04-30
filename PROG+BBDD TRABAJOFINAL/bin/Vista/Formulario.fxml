@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="695.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.ControlFormulario">
+   <children>
+      <Label layoutX="14.0" layoutY="60.0" text="1.-¿Su edad esta comprendida entre los 18 y los 65 años? " />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" prefHeight="53.0" prefWidth="604.0" text="FORMULARIO" textFill="#4bbc2c" underline="true">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="14.0" layoutY="83.0" text="2.- ¿Se encuentra bien hoy?" />
+      <Label layoutX="14.0" layoutY="103.0" text="3.- ¿Pesa más de 50 Kg?" />
+      <Label layoutX="14.0" layoutY="127.0" text="4.- ¿Es la primera vez que dona sangre?" />
+      <Label layoutX="14.0" layoutY="149.0" prefHeight="17.0" prefWidth="473.0" text="5.- ¿Ha donado sangre o aféresis en los últimos 12 meses? " />
+      <Label layoutX="14.0" layoutY="172.0" text="6.- ¿ Ha sido rechazado alguna vez como donante?" />
+      <Label layoutX="14.0" layoutY="195.0" text="7.- ¿Convive en la actualidad o ha convivido en los últimos 4 meses con algún enfermo de SIDA o hepatitis?" />
+      <Label layoutX="14.0" layoutY="218.0" text="8.- ¿Ha compartido en los últimos 4 meses maquinillas de afeitar o cepillos de dientes?" />
+      <Label layoutX="14.0" layoutY="241.0" text="9.- ¿Se ha vacunado en el último mes o le han puesto inmunoglobulinas en los últimos 12 meses?" />
+      <Label layoutX="14.0" layoutY="272.0" text="31.- ¿Ha entendido correctamente las preguntas formuladas en este cuestionario?" />
+      <Label layoutX="54.0" layoutY="241.0" />
+      <RadioButton layoutX="641.0" layoutY="60.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="UNO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="83.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DOS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="241.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="NUEVE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="272.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TREINTAY1" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="595.0" layoutY="272.0" mnemonicParsing="false" toggleGroup="$TREINTAY1" />
+      <RadioButton layoutX="641.0" layoutY="102.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TRES" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="595.0" layoutY="102.0" mnemonicParsing="false" toggleGroup="$TRES" />
+      <RadioButton layoutX="595.0" layoutY="83.0" mnemonicParsing="false" toggleGroup="$DOS" />
+      <RadioButton layoutX="595.0" layoutY="60.0" mnemonicParsing="false" toggleGroup="$UNO" />
+      <RadioButton layoutX="595.0" layoutY="195.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="SIETE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="218.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="OCHO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="595.0" layoutY="218.0" mnemonicParsing="false" toggleGroup="$OCHO" />
+      <RadioButton layoutX="595.0" layoutY="243.0" mnemonicParsing="false" toggleGroup="$NUEVE" />
+      <RadioButton layoutX="641.0" layoutY="127.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="CUATRO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="149.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="CINCO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="172.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="SEIS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="195.0" mnemonicParsing="false" toggleGroup="$SIETE" />
+      <RadioButton layoutX="595.0" layoutY="127.0" mnemonicParsing="false" toggleGroup="$CUATRO" />
+      <RadioButton layoutX="595.0" layoutY="149.0" mnemonicParsing="false" toggleGroup="$CINCO" />
+      <RadioButton layoutX="595.0" layoutY="172.0" mnemonicParsing="false" toggleGroup="$SEIS" />
+      <Label layoutX="598.0" layoutY="27.0" text="SI" />
+      <Label layoutX="640.0" layoutY="27.0" text="NO" />
+      <Label layoutX="14.0" layoutY="323.0" text="Las siguientes 3 preguntas deciden si eres APTO O EXCLUYENTE:" underline="true" />
+      <Label layoutX="14.0" layoutY="352.0" text="¿Padece o ha padecido alguna vez una enfermedad de transmisión sexual o transmisible " />
+      <Label layoutX="15.0" layoutY="366.0" text="por la sangre (SIDA, sífilis, gonorrea, clamidia)?" />
+      <Label layoutX="14.0" layoutY="407.0" text="¿Ha mantenido una relación sexual con una nueva pareja en los últimos 4 meses sin protección? " />
+      <Label layoutX="15.0" layoutY="451.0" text="¿Ha consumido drogas ilegales alguna vez (heroína, cocaína, etc)?" />
+      <RadioButton layoutX="595.0" layoutY="361.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="pex1" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="641.0" layoutY="361.0" mnemonicParsing="false" toggleGroup="$pex1" />
+      <RadioButton layoutX="595.0" layoutY="407.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="pex2" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="642.0" layoutY="407.0" mnemonicParsing="false" toggleGroup="$pex2" />
+      <RadioButton layoutX="595.0" layoutY="451.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="pex3" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="642.0" layoutY="451.0" mnemonicParsing="false" toggleGroup="$pex3" />
+      <Label layoutX="598.0" layoutY="323.0" text="SI" />
+      <Label layoutX="641.0" layoutY="323.0" text="NO" />
+      <Label layoutX="14.0" layoutY="506.0" text="Cod_Formulario" />
+      <Label layoutX="14.0" layoutY="535.0" text="Fecha_Formulario" />
+      <Label layoutX="14.0" layoutY="563.0" text="Fecha_Exclusión" />
+      <Label layoutX="14.0" layoutY="616.0" text="ESTADO DONACION:" />
+      <RadioButton layoutX="142.0" layoutY="603.0" mnemonicParsing="false" text="APTO">
+         <toggleGroup>
+            <ToggleGroup fx:id="ESTADO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="142.0" layoutY="627.0" mnemonicParsing="false" text="EXCLUYENTE" toggleGroup="$ESTADO" />
+      <TextField layoutX="115.0" layoutY="502.0" />
+      <TextField layoutX="115.0" layoutY="531.0" />
+      <TextField layoutX="115.0" layoutY="559.0" />
+      <Button layoutX="371.0" layoutY="552.0" mnemonicParsing="false" prefHeight="85.0" prefWidth="247.0" text="GUARDAR DONACIÓN" textFill="#2f589e">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="VOLVER A DONACIÓN" textFill="#145aa6" />
+   </children>
+</AnchorPane>
