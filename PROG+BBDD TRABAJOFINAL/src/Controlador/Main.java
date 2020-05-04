@@ -1,4 +1,9 @@
 package Controlador;
+
+
+import java.io.IOException;
+
+import Vista.ControlMenuPrincipal;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -34,5 +39,22 @@ public class Main extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+	
+	//Cargamos la ventana principal del proyecto
+	public void mostrarMenuPrincipal() {
+		try {
+			FXMLLoader loader = new FXMLLoader (Main.class.getResource("../Vista/MenuPrincipal.fxml"));
+			rootLayout=(AnchorPane) loader.load();
+			Scene scene = new Scene (rootLayout);
+			primaryStage.setTitle ("Aplicación de Donantes y Donaciones");
+			primaryStage.setScene(scene);
+			
+			//Añadimos las llamadas del main al controlador y del controlador al main
+			ControlMenuPrincipal controller = loader.getController();
+			
+		}catch (IOException e) {
+			System.out.println(e);
+		}
 	}
 }

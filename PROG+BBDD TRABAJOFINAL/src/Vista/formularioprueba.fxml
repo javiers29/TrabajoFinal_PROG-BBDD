@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="915.0" prefWidth="673.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="5.0" layoutY="57.0" text="1.-¿Su edad esta comprendida entre los 18 y los 65 años? ......................................................................................................... " />
+      <Label layoutX="5.0" layoutY="80.0" text="2.- ¿Se encuentra bien hoy? ..................................................................................................................................................................... " />
+      <Label layoutX="5.0" layoutY="100.0" text="3.- ¿Pesa más de 50 Kg?.. ......................................................................................................................................................................... " />
+      <Label layoutX="5.0" layoutY="124.0" text="4.- ¿Es la primera vez que dona sangre?............................................................................................................................................." />
+      <Label layoutX="5.0" layoutY="146.0" prefHeight="17.0" prefWidth="595.0" text="5.- ¿Ha donado sangre o aféresis en los últimos 12 meses?...................................................................................................... " />
+      <Label layoutX="5.0" layoutY="169.0" text="6.- ¿ Ha sido rechazado alguna vez como donante? .................................................................................................................." />
+      <Label layoutX="5.0" layoutY="192.0" text="7.- ¿Convive en la actualidad o ha convivido en los últimos 4 meses con algún enfermo de SIDA o hepatitis?.." />
+      <Label layoutX="5.0" layoutY="215.0" text="8.- ¿Ha compartido en los últimos 4 meses maquinillas de afeitar o cepillos de dientes?.........................................." />
+      <Label layoutX="5.0" layoutY="238.0" text="9.- ¿Se ha vacunado en el último mes o le han puesto inmunoglobulinas en los últimos 12 meses?......................" />
+      <Label layoutX="5.0" layoutY="879.0" text="32.- ¿Ha entendido correctamente las preguntas formuladas en este cuestionario?....................................................." />
+      <Label layoutX="45.0" layoutY="238.0" />
+      <RadioButton layoutX="632.0" layoutY="57.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="UNO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="80.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DOS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="238.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="NUEVE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="879.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TREINTAYDOS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="879.0" mnemonicParsing="false" toggleGroup="$TREINTAYDOS" />
+      <RadioButton layoutX="632.0" layoutY="99.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TRES" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="99.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TRES" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="80.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DOS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="57.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="UNO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="192.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="SIETE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="215.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="OCHO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="215.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="OCHO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="240.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="NUEVE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="124.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="CUATRO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="146.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="CINCO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="169.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="SEIS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="632.0" layoutY="192.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="SIETE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="124.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="CUATRO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="146.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="CINCO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="169.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="SEIS" />
+         </toggleGroup>
+      </RadioButton>
+      <Label layoutX="5.0" layoutY="261.0" text="10.-¿Le han puesto la vacuna de la rabia en el último año? ..................................................................................................." />
+      <RadioButton layoutX="632.0" layoutY="262.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DIEZ" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="262.0" mnemonicParsing="false" toggleGroup="$DIEZ" />
+      <Label layoutX="5.0" layoutY="311.0" text="12.-¿Toma alguna medicación incluida aspirina, ibuprofeno o derivados en los últimos cinco días?.................. " />
+      <RadioButton layoutX="632.0" layoutY="311.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DOCE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="311.0" mnemonicParsing="false" toggleGroup="$DOCE" />
+      <Label layoutX="5.0" layoutY="288.0" text="11.-¿Se ha realizado algún tratamiento dental en los últimos 7 días?............................................................................. " />
+      <RadioButton layoutX="632.0" layoutY="288.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="ONCE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="288.0" mnemonicParsing="false" toggleGroup="$ONCE" />
+      <Label layoutX="5.0" layoutY="337.0" text="13.-¿Ha tomado alguna vez: PROSCAR, PROPECIA, ROACUTAN, ISOTREX, TIGASON, AVODART, DUAGEN?....... " />
+      <RadioButton layoutX="632.0" layoutY="337.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TRECE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="337.0" mnemonicParsing="false" toggleGroup="$TRECE" />
+      <Label layoutX="5.0" layoutY="386.0" text="15.-¿Ha sido hospitalizado, operado de algo o le han realizado una endoscopia  en los últimos cuatro meses? " />
+      <RadioButton layoutX="632.0" layoutY="386.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="QUINCE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="386.0" mnemonicParsing="false" toggleGroup="$QUINCE" />
+      <Label layoutX="5.0" layoutY="363.0" text="14.-¿Ha tenido fiebre (&gt;38º C), diarrea, o alguna otra infección en los últimos quince días?................................. " />
+      <RadioButton layoutX="632.0" layoutY="363.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="CATORCE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="363.0" mnemonicParsing="false" toggleGroup="$CATORCE" />
+      <Label layoutX="5.0" layoutY="413.0" text="16.-¿Ha sufrido alguna salpicadura con sangre o punción accidental con aguja en los últimos 4 meses? ............" />
+      <RadioButton layoutX="632.0" layoutY="413.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DIECISEIS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="413.0" mnemonicParsing="false" toggleGroup="$DIECISEIS" />
+      <Label layoutX="5.0" layoutY="462.0" text="18.-Si es mujer ¿Ha estado embarazada en los últimos seis meses? ¿Está todavía amamantando al niño? ........" />
+      <RadioButton layoutX="632.0" layoutY="462.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DIECIOCHO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="462.0" mnemonicParsing="false" toggleGroup="$DIECIOCHO" />
+      <Label layoutX="5.0" layoutY="439.0" text="17.-¿Se ha hecho algún tatuaje, piercing, agujero en oreja, acupuntura en los últimos 4 meses?............................. " />
+      <RadioButton layoutX="632.0" layoutY="439.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DIECISIETE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="439.0" mnemonicParsing="false" toggleGroup="$DIECISIETE" />
+      <Label layoutX="5.0" layoutY="486.0" text="19.¿Ha tenido algún episodio alérgico importante en el último año ? ¿Sufre de asma?................................................" />
+      <RadioButton layoutX="632.0" layoutY="486.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="DIECINUEVE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="486.0" mnemonicParsing="false" toggleGroup="$DIECINUEVE" />
+      <Label layoutX="5.0" layoutY="535.0" text="21.-¿Ha tenido alguna enfermedad grave de cerebro, riñón, tiroides, pulmón, corazón" />
+      <RadioButton layoutX="632.0" layoutY="550.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTIUNO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="550.0" mnemonicParsing="false" toggleGroup="$VEINTIUNO" />
+      <Label layoutX="5.0" layoutY="512.0" text="20.-¿Ha padecido alguna enfermedad infecciosa grave?........................................................................................................ " />
+      <RadioButton layoutX="632.0" layoutY="512.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="512.0" mnemonicParsing="false" toggleGroup="$VEINTE" />
+      <Label layoutX="5.0" layoutY="581.0" text="22.-¿Ha tenido convulsiones no febriles, desmayos o epilepsia?.......................................................................................... " />
+      <RadioButton layoutX="632.0" layoutY="581.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTIDOS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="581.0" mnemonicParsing="false" toggleGroup="$VEINTIDOS" />
+      <Label layoutX="5.0" layoutY="630.0" text="24.-¿Ha utilizado anabolizantes para aumentar la musculatura alguna vez en su vida?................................................. " />
+      <RadioButton layoutX="632.0" layoutY="630.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTICUATRO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="630.0" mnemonicParsing="false" toggleGroup="$VEINTICUATRO" />
+      <Label layoutX="5.0" layoutY="607.0" text="23.-¿Le han transfundido sangre en alguna ocasión? ¿Cuando? ¿En qué país?................................................................ " />
+      <RadioButton layoutX="632.0" layoutY="607.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTITRES" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="607.0" mnemonicParsing="false" toggleGroup="$VEINTITRES" />
+      <Label layoutX="5.0" layoutY="553.0" text="(infarto, angina, arritmia), aparato digestivo, diabetes, cáncer, o problemas de coagulación?................................." />
+      <Label layoutX="5.0" layoutY="697.0" text="26.-¿Ha residido en el Reino Unido más de un año acumulativo entre los años 1980 a 1996 inclusive? ¿Tiene " />
+      <RadioButton layoutX="632.0" layoutY="712.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTISEIS" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="712.0" mnemonicParsing="false" toggleGroup="$VEINTISEIS" />
+      <Label layoutX="5.0" layoutY="654.0" text="25.-¿Ha sido tratado con hormonas de crecimiento?, ¿tiene antecedentes de trasplante de cornea " />
+      <RadioButton layoutX="632.0" layoutY="669.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTICINCO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="669.0" mnemonicParsing="false" toggleGroup="$VEINTICINCO" />
+      <Label layoutX="5.0" layoutY="743.0" text="27.-¿Ha nacido Vd.,su madre o su abuela materna fuera de la UE? ¿Dónde? ¿Cuándo " />
+      <RadioButton layoutX="632.0" layoutY="759.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTISIETE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="759.0" mnemonicParsing="false" toggleGroup="$VEINTISIETE" />
+      <Label layoutX="5.0" layoutY="805.0" text="29.-¿Ha residido en algún momento de su vida 6 o más meses fuera de la UE? ¿Dónde?........................................... " />
+      <RadioButton layoutX="632.0" layoutY="805.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTINUEVE" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="805.0" mnemonicParsing="false" toggleGroup="$VEINTINUEVE" />
+      <Label layoutX="5.0" layoutY="782.0" text="28.-¿Ha viajado fuera de la UE en los últimos 6 meses? ¿Dónde?........................................................................................" />
+      <RadioButton layoutX="632.0" layoutY="782.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="VEINTIOCHO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="782.0" mnemonicParsing="false" toggleGroup="$VEINTIOCHO" />
+      <Label layoutX="5.0" layoutY="715.0" text="antecedentes familiares de enfermedad de Creutzfeldt Jacob (enfermedad de las vacas locas)?......................." />
+      <Label layoutX="5.0" layoutY="854.0" text="31.- En el último año, ¿Le han hecho alguna prueba o reconocimiento médico?............................................................." />
+      <RadioButton layoutX="632.0" layoutY="854.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TREINTAYUNO" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="854.0" mnemonicParsing="false" toggleGroup="$TREINTAYUNO" />
+      <Label layoutX="5.0" layoutY="830.0" text="30.-¿Va a realizar en las siguientes doce horas tras la donación alguna actividad laboral de riesgo?....................." />
+      <RadioButton layoutX="632.0" layoutY="830.0" mnemonicParsing="false">
+         <toggleGroup>
+            <ToggleGroup fx:id="TREINTA" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="586.0" layoutY="830.0" mnemonicParsing="false" toggleGroup="$TREINTA" />
+      <Label layoutX="5.0" layoutY="670.0" text="o injerto de duramadre?......................................................................................................................................................................" />
+      <Label layoutX="5.0" layoutY="757.0" text="regresó de su último viaje a su país de origen? ............................................................................................................................." />
+      <Label layoutX="586.0" layoutY="29.0" text="SI">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="625.0" layoutY="30.0" text="NO">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -75,6 +75,10 @@ public class ConexionBBDD {
 	public void EditarDonante() {
 		
 	}
+	
+	public void CrearCarnetDonante() {
+		
+	}
 
 	//PANTALLA DONACIONES
 	
