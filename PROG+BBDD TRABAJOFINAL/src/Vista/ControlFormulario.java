@@ -1,9 +1,14 @@
 package Vista;
 
 
+import Controlador.Main;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 public class ControlFormulario {
 
@@ -237,7 +242,82 @@ public class ControlFormulario {
 		private ToggleGroup TREINTAYDOS;
 		
 		
+		@FXML
+		private RadioButton pex1;
+		@FXML
+		private RadioButton pex1_2;
+		@FXML
+		private ToggleGroup PEX1	;
 		
+		
+		@FXML
+		private RadioButton pex2;
+		@FXML
+		private RadioButton pex2_2;
+		@FXML
+		private ToggleGroup PEX2;
+		
+		
+		@FXML
+		private RadioButton pex3;
+		@FXML
+		private RadioButton pex3_2;
+		@FXML
+		private ToggleGroup PEX3;
+		
+		
+		@FXML
+		private TextField cod_formulario;
+		
+		@FXML
+		private TextField fecha_formulario;
+		
+		@FXML
+		private TextField fecha_exclusion;
+		
+		@FXML
+		private TextField num_donante;
+		
+		@FXML
+		private RadioButton rb_apto;
+		@FXML
+		private RadioButton rb_excluyente;
+		@FXML
+		private ToggleGroup ESTADO;
+		
+		
+		@FXML
+		private Button volverMenu;
+		@FXML
+		private Button guardarFormulario;
+		
+		private Stage VentanaFormulario;
+		
+		
+		
+		private  Main MenuPrincipal;
+		
+		
+		
+
+
+		public void setStagePrincipal(Stage VentanaFormulario) {
+			// TODO Auto-generated method stub
+			this.VentanaFormulario = VentanaFormulario;
+		}
+
+		public void closeWindow(){
+			this.VentanaFormulario.close();
+		}
+
+		
+		
+		public void GuardarFormulario() {
+			this.MenuPrincipal.mostrarVentanaDonaciones();
+			
+			
+			
+		 }
 }
 
 

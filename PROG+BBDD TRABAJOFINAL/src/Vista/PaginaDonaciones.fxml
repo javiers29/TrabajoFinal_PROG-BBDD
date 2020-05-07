@@ -14,7 +14,7 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <Button layoutX="4.0" layoutY="4.0" mnemonicParsing="false" text="VOLVER" textFill="#145aa6" />
+            <Button fx:id="volvermenu" layoutX="4.0" layoutY="4.0" mnemonicParsing="false" onAction="#VolverMenu" text="VOLVER AL MENÚ" textFill="#145aa6" />
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="3.0" prefHeight="53.0" prefWidth="689.0" text="DONACIONES" textFill="#4bbc2c" underline="true">
                <font>
                   <Font size="36.0" />
@@ -29,32 +29,35 @@
             <Label layoutX="320.0" layoutY="78.0" text="Hb_cap" />
             <Label layoutX="320.0" layoutY="111.0" text="Hb_ven" />
             <Label layoutX="320.0" layoutY="143.0" text="Fecha" />
-            <DatePicker layoutX="374.0" layoutY="139.0" />
-            <TextField layoutX="125.0" layoutY="74.0" />
-            <TextField layoutX="125.0" layoutY="107.0" />
-            <TextField layoutX="125.0" layoutY="139.0" />
-            <TextField layoutX="125.0" layoutY="172.0" />
-            <TextField layoutX="125.0" layoutY="207.0" />
-            <TextField layoutX="125.0" layoutY="242.0" />
-            <TextField layoutX="374.0" layoutY="74.0" />
-            <TextField layoutX="374.0" layoutY="107.0" />
-            <Label layoutX="305.0" layoutY="185.0" text="Antes de poder registrar la donación es necesario realizarle" />
-            <Label layoutX="302.0" layoutY="201.0" text=" el siguiente formulario al donante." />
-            <Button layoutX="423.0" layoutY="234.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="149.0" text="FORMULARIO" />
+            <DatePicker fx:id="fecha" layoutX="374.0" layoutY="139.0" />
+            <TextField fx:id="num_donacion" layoutX="125.0" layoutY="74.0" />
+            <TextField fx:id="cod_colecta" layoutX="125.0" layoutY="107.0" />
+            <TextField fx:id="tipo" layoutX="125.0" layoutY="139.0" />
+            <TextField fx:id="pulso" layoutX="125.0" layoutY="172.0" />
+            <TextField fx:id="ta_sist" layoutX="125.0" layoutY="207.0" />
+            <TextField fx:id="ta_diast" layoutX="125.0" layoutY="242.0" />
+            <TextField fx:id="hb_cap" layoutX="374.0" layoutY="74.0" />
+            <TextField fx:id="hb_ven" layoutX="374.0" layoutY="107.0" />
+            <Button fx:id="guardar_donacion" layoutX="361.0" layoutY="220.0" mnemonicParsing="false" onAction="#GuardarDonacion" prefHeight="53.0" prefWidth="305.0" text="GUARDAR DONACIÓN" textFill="#39cd25">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Button>
+            <Label layoutX="288.0" layoutY="179.0" text="Nº Donante" />
+            <TextField fx:id="num_donante" layoutX="374.0" layoutY="175.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
-            <TableView layoutX="-7.0" layoutY="-2.0" prefHeight="157.0" prefWidth="732.0">
+            <TableView fx:id="tabla_donaciones" layoutX="-7.0" layoutY="-2.0" prefHeight="157.0" prefWidth="732.0">
               <columns>
-                <TableColumn prefWidth="100.0" text="Nº Donación" />
-                <TableColumn prefWidth="83.0" text="Cod_Colecta" />
-                  <TableColumn prefWidth="47.0" text="Tipo" />
-                  <TableColumn prefWidth="57.0" text="Pulso" />
-                  <TableColumn prefWidth="67.0" text="TA_sist" />
-                  <TableColumn prefWidth="82.0" text="TA_diast" />
-                  <TableColumn prefWidth="88.0" text="Hb_cap" />
-                  <TableColumn prefWidth="101.0" text="Hb_ven" />
-                  <TableColumn prefWidth="106.0" text="Fecha" />
+                <TableColumn fx:id="colum_num_donacion" prefWidth="100.0" text="Nº Donación" />
+                <TableColumn fx:id="colum_cod_colecta" prefWidth="83.0" text="Cod_Colecta" />
+                  <TableColumn fx:id="colum_tipo" prefWidth="47.0" text="Tipo" />
+                  <TableColumn fx:id="colum_pulso" prefWidth="57.0" text="Pulso" />
+                  <TableColumn fx:id="colum_ta_sist" prefWidth="67.0" text="TA_sist" />
+                  <TableColumn fx:id="colum_ta_diast" prefWidth="82.0" text="TA_diast" />
+                  <TableColumn fx:id="colum_hb_cap" prefWidth="88.0" text="Hb_cap" />
+                  <TableColumn fx:id="colum_hb_ven" prefWidth="101.0" text="Hb_ven" />
+                  <TableColumn fx:id="colum_fecha" prefWidth="106.0" text="Fecha" />
               </columns>
             </TableView>
          </children></AnchorPane>
