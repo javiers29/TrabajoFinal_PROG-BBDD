@@ -18,7 +18,7 @@ public class Donante {
 	private String correo_electronico;
 	private char sexo;
 	
-	public Donante(Integer num_donante, String nombre, String apellido1, String apellido2, String ciclo, String dNI,
+	public Donante(Integer num_donante, String nombre, String apellido1, String apellido2, String ciclo, String dni,
 			String fecha_nac, String pais_nac, String direccion, String poblacion, Integer cod_postal,
 			Integer telefono1, Integer telefono2, String correo_electronico, char sexo) {
 		super();
@@ -27,7 +27,7 @@ public class Donante {
 		this.apellido1 = apellido1;
 		this.apellido2 = apellido2;
 		this.ciclo = ciclo;
-		DNI = dNI;
+		this.DNI = dni;
 		this.fecha_nac = fecha_nac;
 		this.pais_nac = pais_nac;
 		this.direccion = direccion;

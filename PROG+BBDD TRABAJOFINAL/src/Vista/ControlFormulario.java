@@ -318,6 +318,14 @@ public class ControlFormulario {
 			
 			
 		 }
+
+		public void setMenuPrincipal(Main menuPrincipal) {
+			MenuPrincipal = menuPrincipal;
+		}
+		
+		
+		
+		
 }
 
 

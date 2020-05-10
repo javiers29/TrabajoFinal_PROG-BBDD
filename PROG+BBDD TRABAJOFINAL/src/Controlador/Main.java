@@ -71,6 +71,7 @@ public class Main extends Application {
 
             ControlDonaciones controller3 = loader.getController();
             controller3.setStagePrincipal(PaginaDonaciones);
+            controller3.setMenuPrincipal(this);
 
             PaginaDonaciones.show();
 
@@ -94,6 +95,7 @@ public class Main extends Application {
 
 	            ControlFormulario controller2 = loader.getController();
 	            controller2.setStagePrincipal(PaginaFormulario);
+	            controller2.setMenuPrincipal(this);
 
 	            PaginaFormulario.show();
 
