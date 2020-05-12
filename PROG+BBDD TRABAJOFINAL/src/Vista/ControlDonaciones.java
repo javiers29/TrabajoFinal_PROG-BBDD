@@ -86,7 +86,8 @@ public class ControlDonaciones {
 
 	private Main MenuPrincipal;
 	
-	private Stage VentanaDonaciones;
+	public Stage VentanaDonaciones;
+	
 	ConexionBBDD conn;
 	 private ObservableList <Donacion> datosdonacion= FXCollections.observableArrayList();
 
@@ -125,10 +126,6 @@ public class ControlDonaciones {
 	}
 
 
-
-	public void closeWindow(){
-		this.VentanaDonaciones.close();
-	}
 	
 	 public void GuardarDonacion(ActionEvent event) {
 		 
@@ -136,6 +133,6 @@ public class ControlDonaciones {
 
 	 
 	 public void VolverMenu(ActionEvent event) {
-		 
+		 this.VentanaDonaciones.close();
 	 }
 }

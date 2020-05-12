@@ -15,7 +15,7 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <Button fx:id="volvermenu" layoutX="4.0" layoutY="4.0" mnemonicParsing="false" onAction="#VolverMenu" text="VOLVER AL MENÚ" textFill="#145aa6" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="3.0" prefHeight="53.0" prefWidth="689.0" text="DONACIONES" textFill="#4bbc2c" underline="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="3.0" prefHeight="53.0" prefWidth="305.0" text="DONACIONES" textFill="#4bbc2c" underline="true">
                <font>
                   <Font size="36.0" />
                </font>

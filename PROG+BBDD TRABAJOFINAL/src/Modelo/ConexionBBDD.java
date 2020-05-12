@@ -5,9 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class ConexionBBDD {
 
@@ -133,7 +137,7 @@ public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 		 
 		Statement stm = conexion.createStatement();
 		//Preparo la sentencia SQL 
-		String selectsql= "SELECT * FROM BBDD1DAW.DONANTE";
+		String selectsql= "SELECT * FROM BBDD1DAW.DONACION";
 		
 		//ejecuto sentencia
 		try {
@@ -170,6 +174,47 @@ public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 		}
 		return listadonacion;
 	}
+
+
+
+
+public void NuevoDonante(Integer num_donante, String nombre,String apellido1, String apellido2, String ciclo, String DNI, String fecha_nac,  String pais_nac, String direccion, String poblacion, Integer cod_postal, Integer tlfn1,Integer tlfn2,String correo_electronico, Character sexo) throws SQLException {
+	
+	ConexionBBDD conn = new ConexionBBDD();
+	   
+	   try {
+		
+		String insertdonante = "INSERT INTO BBDD1DAW.DONANTE VALUES ("+ num_donante +", '" + nombre + "', '"+ apellido1 + "', '" + apellido2 + "', '"+ ciclo + "',null, '"+ DNI + "', '" + fecha_nac + "', '"+ pais_nac + "', '"+ direccion + "', '" + poblacion + "', "+ cod_postal + ", "+ tlfn1 + ", " + tlfn2 + ", '"+ correo_electronico + "', '"+ sexo + "')";
+		
+		
+		
+		Statement stm = conn.conexion.createStatement();
+		int resultado = stm.executeUpdate(insertdonante);
+		if(resultado == 1) {
+			Alert alert1 = new Alert (AlertType.INFORMATION);
+			  alert1.setTitle("VALORES INTRODUCIDOS CORRECTAMENTE");
+			  alert1.setContentText("El nuevo donante se ha añadido correctamente a la base de datos.");
+			  alert1.showAndWait();
+				}
+	   }catch(SQLException sqle){
+		   int pos= sqle.getMessage().indexOf(":");
+			String codeErrorSQL = sqle.getMessage().substring(0, pos);
+			if(codeErrorSQL.equals("ORA-00001")) {
+				Alert alert1 = new Alert (AlertType.INFORMATION);
+				  alert1.setTitle("Nº DE DONANTE DUPLICADO");
+				  alert1.setContentText("El Nº de Donante que estas introduciendo ya figura en nuestra base de datos.");
+				  alert1.showAndWait();
+			}else {
+				Alert alert1 = new Alert (AlertType.INFORMATION);
+				  alert1.setTitle("ERROR");
+				  alert1.setContentText("Se ha producido un error en la inserción de datos.");
+				  alert1.showAndWait();
+			}
+	   }
+		 
+   }
+
+
 	public void CrearCarnetDonante() {
 		
 	}

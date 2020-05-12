@@ -58,7 +58,7 @@
             </RadioButton>
             <RadioButton fx:id="rbmujer" layoutX="677.0" layoutY="144.0" mnemonicParsing="false" text="Mujer" toggleGroup="$sexo" />
             <Button fx:id="l" layoutX="5.0" layoutY="5.0" mnemonicParsing="false" onAction="#closeWindow" text="VOLVER AL MENÚ" textFill="#145aa6" />
-            <Button fx:id="btGuardar" layoutX="882.0" layoutY="20.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="129.0" text="GUARDAR" textFill="#408a22">
+            <Button fx:id="btGuardar" layoutX="882.0" layoutY="20.0" mnemonicParsing="false" onAction="#GuardarDatos" prefHeight="63.0" prefWidth="129.0" text="GUARDAR" textFill="#408a22">
                <font>
                   <Font size="18.0" />
                </font>
@@ -68,7 +68,7 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btReset" layoutX="882.0" layoutY="144.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="129.0" text="RESET" textFill="#ff0d00">
+            <Button fx:id="btReset" layoutX="882.0" layoutY="144.0" mnemonicParsing="false" onAction="#reset" prefHeight="43.0" prefWidth="129.0" text="RESET" textFill="#ff0d00">
                <font>
                   <Font size="18.0" />
                </font>

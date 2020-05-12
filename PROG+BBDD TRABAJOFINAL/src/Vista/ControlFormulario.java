@@ -313,6 +313,7 @@ public class ControlFormulario {
 		
 		
 		public void GuardarFormulario() {
+			this.VentanaFormulario.close();
 			this.MenuPrincipal.mostrarVentanaDonaciones();
 			
 			
