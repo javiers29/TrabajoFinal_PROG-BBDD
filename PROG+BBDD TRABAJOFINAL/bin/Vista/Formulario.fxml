@@ -104,21 +104,9 @@
                         <ToggleGroup fx:id="TRES" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="P3" layoutX="586.0" layoutY="78.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="TRES" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="P2" layoutX="586.0" layoutY="59.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="DOS" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="P1" layoutX="586.0" layoutY="36.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="UNO" />
-                     </toggleGroup>
-                  </RadioButton>
+                  <RadioButton fx:id="P3" layoutX="586.0" layoutY="78.0" mnemonicParsing="false" toggleGroup="$TRES" />
+                  <RadioButton fx:id="P2" layoutX="586.0" layoutY="59.0" mnemonicParsing="false" toggleGroup="$DOS" />
+                  <RadioButton fx:id="P1" layoutX="586.0" layoutY="36.0" mnemonicParsing="false" toggleGroup="$UNO" />
                   <RadioButton fx:id="P7" layoutX="586.0" layoutY="171.0" mnemonicParsing="false">
                      <toggleGroup>
                         <ToggleGroup fx:id="SIETE" />
@@ -129,16 +117,8 @@
                         <ToggleGroup fx:id="OCHO" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="P8" layoutX="586.0" layoutY="194.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="OCHO" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="P9" layoutX="586.0" layoutY="219.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="NUEVE" />
-                     </toggleGroup>
-                  </RadioButton>
+                  <RadioButton fx:id="P8" layoutX="586.0" layoutY="194.0" mnemonicParsing="false" toggleGroup="$OCHO" />
+                  <RadioButton fx:id="P9" layoutX="586.0" layoutY="219.0" mnemonicParsing="false" toggleGroup="$NUEVE" />
                   <RadioButton fx:id="P4_2" layoutX="632.0" layoutY="103.0" mnemonicParsing="false">
                      <toggleGroup>
                         <ToggleGroup fx:id="CUATRO" />
@@ -154,26 +134,10 @@
                         <ToggleGroup fx:id="SEIS" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="P7_2" layoutX="632.0" layoutY="171.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="SIETE" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="P4" layoutX="586.0" layoutY="103.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="CUATRO" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="P5" layoutX="586.0" layoutY="125.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="CINCO" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="P6" layoutX="586.0" layoutY="148.0" mnemonicParsing="false">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="SEIS" />
-                     </toggleGroup>
-                  </RadioButton>
+                  <RadioButton fx:id="P7_2" layoutX="632.0" layoutY="171.0" mnemonicParsing="false" toggleGroup="$SIETE" />
+                  <RadioButton fx:id="P4" layoutX="586.0" layoutY="103.0" mnemonicParsing="false" toggleGroup="$CUATRO" />
+                  <RadioButton fx:id="P5" layoutX="586.0" layoutY="125.0" mnemonicParsing="false" toggleGroup="$CINCO" />
+                  <RadioButton fx:id="P6" layoutX="586.0" layoutY="148.0" mnemonicParsing="false" toggleGroup="$SEIS" />
                   <Label layoutX="5.0" layoutY="240.0" text="10.-¿Le han puesto la vacuna de la rabia en el último año? ..................................................................................................." />
                   <RadioButton fx:id="P10_2" layoutX="632.0" layoutY="241.0" mnemonicParsing="false">
                      <toggleGroup>

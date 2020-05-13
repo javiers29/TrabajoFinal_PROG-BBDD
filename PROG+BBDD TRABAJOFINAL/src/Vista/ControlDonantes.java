@@ -2,16 +2,19 @@ package Vista;
 
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import Controlador.Main;
 import Modelo.ConexionBBDD;
 import Modelo.Donante;
+import Modelo.Persona;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
@@ -142,6 +145,10 @@ public class ControlDonantes {
 	ConexionBBDD conn;
 	 private ObservableList <Donante> datosdonantes= FXCollections.observableArrayList();
 	 
+	// Atributos necesarios para codificar la edicion
+		private boolean edicion;
+		private int indiceedicion;
+	 
 	 
 	 public void initialize() throws SQLException {
 		   conn = new ConexionBBDD();
@@ -177,7 +184,7 @@ public class ControlDonantes {
 			
 	   }
 	 
-	 public void GuardarDatos(ActionEvent event) throws SQLException {
+	 public void GuardarDonante(ActionEvent event) throws SQLException {
 		   
 		   if(num_donante.getText().equals("")|| nombre.getText().equals("") || apellido1.getText().equals("") ||  apellido2.getText().equals("") || DNI.getText().equals("") || fecha_nac == null || pais_nac.getText().equals("") || direccion.getText().equals("") || poblacion.getText().equals("") || cod_postal.getText().equals("") || tlfn1.getText().equals("") || correo_electronico.getText().equals("") || sexo==null) {
 				  Alert alert = new Alert (AlertType.INFORMATION);
@@ -189,8 +196,15 @@ public class ControlDonantes {
 		   
 			   
 			   DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
-			  
+			   String fecha_n = fecha_nac.getValue().format(isoFecha);
 			   
+			   //mes-dia-año
+			   String mes=  fecha_n.substring(8, 10);
+			   String dia= fecha_n.substring(5, 7);
+			   String año= fecha_n.substring(0, 4);
+			   
+			   String fecha_na= mes+ "-" + dia + "-" + año;
+ 			   
 			   
 			   
 			   Integer num_donante=Integer.parseInt(this.num_donante.getText());
@@ -200,14 +214,26 @@ public class ControlDonantes {
 			   String apellido2= this.apellido2.getText();
 			   String ciclo=(String) this.ciclo.getValue();
 			   String DNI= this.DNI.getText();
-			   String fecha_nac = this.fecha_nac.getValue().format(isoFecha);
+			  
 			   String pais_nac = this.pais_nac.getText();
 			   String direccion= this.direccion.getText();
 			   String poblacion = this.poblacion.getText();
 			 
 			   Integer cod_postal=Integer.parseInt(this.cod_postal.getText());
 			   Integer tlfn1=Integer.parseInt(this.tlfn1.getText());
-			   Integer tlfn2=Integer.parseInt(this.tlfn2.getText());
+			   Integer tlfn2_int;
+			   
+			   
+			   
+			   if(this.tlfn2.getText().equals("")) {
+				   tlfn2_int=null;
+			   }else {
+			    tlfn2_int=Integer.parseInt(this.tlfn2.getText());
+			   }
+			   
+			  
+			   
+			   
 			   
 			   
 			   String correo_electronico= this.correo_electronico.getText();
@@ -225,18 +251,18 @@ public class ControlDonantes {
 				   sexo='M';
 			   }
 			   
-			   Donante DonanteNuevo= new Donante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_nac, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2, correo_electronico, sexo);
+			   Donante DonanteNuevo= new Donante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_na, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2_int, correo_electronico, sexo);
 			   this.datosdonantes.add(DonanteNuevo);
 			   this.tabla_donantes.setItems(this.datosdonantes);
 			
-				conn.NuevoDonante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_nac, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2, correo_electronico, sexo);
+				conn.NuevoDonante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_na, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2_int, correo_electronico, sexo);
 				conn.MostrarTablaDonantes();
 		   }
 		   }
 	 
 	 
 	 
-	 public void reset(ActionEvent event) {
+	 public void reset() {
 		   
 		   this.num_donante.setText("");
 		   this.nombre.setText("");
@@ -256,7 +282,120 @@ public class ControlDonantes {
 	 }
 	
 	
+	 public void EliminarDonante() throws SQLException{
+			int index = tabla_donantes.getSelectionModel().getSelectedIndex();
+			if( index >= 0){
 
+				Donante seleccionada = tabla_donantes.getSelectionModel().getSelectedItem();
+
+				// Se abre un dialog box de confirmacion de eliminar
+				Alert alert = new Alert(AlertType.CONFIRMATION);
+				alert.setTitle("¡¡Confirmación!!");
+				alert.setHeaderText("Por favor confirme el borrado");
+				alert.setContentText("¿Esta seguro que desea borrar al Donante "+ seleccionada.getNombre() + " " +seleccionada.getApellido1() +" ?");
+
+				Optional<ButtonType> result = alert.showAndWait();
+				if (result.get() == ButtonType.OK){
+				    // ... user chose OK
+
+					// Llamar a un método que realice el DELETE en la base de datos
+					ConexionBBDD con = new ConexionBBDD();
+					int res = con.BorrarDonante(seleccionada.getNum_donante());
+					switch(res){
+						case 0:
+							alert = new Alert(AlertType.INFORMATION);
+							alert.setTitle("OK!");
+							alert.setHeaderText("Borrado OK!");
+							alert.setContentText("¡Donante borrado con éxito!");
+							alert.showAndWait();
+
+							// Actualizo los datos de la tabla
+							datosdonantes = con.ObtenerDonante();
+							tabla_donantes.setItems(datosdonantes);
+							break;
+
+						default:
+				
+							break;
+					}
+
+					reset();
+				}
+
+			}else{
+
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("Error en selección de datos");
+				alert.setContentText("NO HAY NINGUN DONANTE SELECCIONADO!");
+				alert.showAndWait();
+
+			}
+		}
+	 
+	 public void Editar(){
+
+
+			int index = tabla_donantes.getSelectionModel().getSelectedIndex();
+
+
+			if( index >= 0){
+
+				// Activo la "funcionalidad" de editar para luego que el botón guardar sepa a qué PErsona estoy "editando"
+				edicion = true;
+				indiceedicion = index;
+
+
+				/*Donante seleccionado = Donante.getSelectionModel().getSelectedItem();
+
+			
+				
+				String seleccnum_don = (seleccionado.getNum_donante().toString());
+				   num_donante.setText(seleccnum_don);
+				   nombre.setText(seleccionado.getNombre());
+				   apellido1.setText(seleccionado.getApellido1());;
+				   apellido2.setText(seleccionado.getApellido2());
+				   ciclo.setValue(seleccionado.getCiclo());
+				   DNI.setText(seleccionado.getDNI());
+				  
+				   pais_nac.setText(seleccionado.getPais_nac());
+				   direccion.setText(seleccionado.getDireccion());
+				   poblacion.setText(seleccionado.getPoblacion());
+				 
+				   cod_postal.setText(this.cod_postal.getText());
+				   
+				   String telefono1= (seleccionado.getTelefono1().toString());
+				   tlfn1.setText(telefono1);
+				   
+				   String telefono2= (seleccionado.getTelefono2().toString());
+				   tlfn2.setText(telefono2);
+				   
+				   
+				   
+				   if(this.tlfn2.getText().equals("")) {
+					   telefono2=null;
+				   }else {
+				    Integer.parseInt(this.tlfn2.getText());
+				   }
+
+				   correo_electronico.getText();
+				   
+				   
+				    
+				   Character sexo;
+				   
+				 
+				   
+				   if (this.rbhombre.isSelected()==true) {
+					   sexo='H';
+					   
+				   }else {
+					   sexo='M';
+				   }
+				   
+			}
+		}
+*/
 
 	public void setStagePrincipal(Stage VentanaDonantes) {
 		// TODO Auto-generated method stub

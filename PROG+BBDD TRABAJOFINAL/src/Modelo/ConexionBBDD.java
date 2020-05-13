@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -214,7 +212,87 @@ public void NuevoDonante(Integer num_donante, String nombre,String apellido1, St
 		 
    }
 
+public ObservableList<Donante> ObtenerDonante() throws SQLException{
 
+	ObservableList<Donante> listadonantes = FXCollections.observableArrayList();
+
+	//Preparo la conexión para ejecutar sentencias SQL de tipo update
+	Statement stm = conexion.createStatement();
+
+	// Preparo la sentencia SQL CrearTablaPersonas
+	String selectsql = "SELECT * FROM " + usr +".DONANTE";
+
+	//ejecuto la sentencia
+	try{
+		ResultSet resultado = stm.executeQuery(selectsql);
+
+		int contador = 0;
+		while(resultado.next()){
+			contador++;
+
+			Integer num_donante=(int) resultado.getLong(1);
+			String nombre=resultado.getString(2);
+			String apellido1=resultado.getString(3);
+			String apellido2=resultado.getString(4);
+			String ciclo=resultado.getString(5);
+			String dni=resultado.getString(7);
+			String fecha_nac=resultado.getString(8);
+			String pais_nac=resultado.getString(9);
+			String direccion=resultado.getString(10);
+			String poblacion=resultado.getString(11);
+			Integer cod_postal=(int) resultado.getLong(12);
+			Integer tlfn1=(int) resultado.getLong(13);
+			Integer tlfn2=(int) resultado.getLong(14);
+			String correo_electronico=resultado.getString(15);
+			Character sexo=resultado.getString(16).charAt(0);
+
+			Donante nuevo = new Donante(num_donante,nombre,apellido1,apellido2,ciclo,dni,fecha_nac,pais_nac,direccion,poblacion,cod_postal,tlfn1,tlfn2,correo_electronico,sexo);
+			listadonantes.add(nuevo);
+		}
+
+		if(contador==0)
+			System.out.println("no data found");
+
+	}catch(SQLException sqle){
+
+		int pos = sqle.getMessage().indexOf(":");
+		String codeErrorSQL = sqle.getMessage().substring(0,pos);
+
+		System.out.println(codeErrorSQL);
+	}
+
+	return listadonantes;
+}
+
+
+
+
+public int BorrarDonante(int num_donante ) throws SQLException{
+
+	// Preparo la sentencia SQL y la conexión para ejecutar sentencias SQL de tipo update
+	String deletesql = "DELETE " + usr +".DONANTE WHERE NUM_DONANTE= ?";
+	PreparedStatement pstmt = conexion.prepareStatement (deletesql);
+	pstmt.setLong(1, num_donante);
+
+	//ejecuto la sentencia
+	try{
+		int resultado = pstmt.executeUpdate();
+
+		if(resultado != 1)
+			System.out.println("Error en el borrado " + resultado);
+		
+
+		return 0;
+	}catch(SQLException sqle){
+
+		int pos = sqle.getMessage().indexOf(":");
+		String codeErrorSQL = sqle.getMessage().substring(0,pos);
+
+		System.out.println("Ha habido algún problema con  Oracle al hacer el borrado: " + codeErrorSQL);
+		return 2;
+	}
+
+}
 	public void CrearCarnetDonante() {
 		
 	}

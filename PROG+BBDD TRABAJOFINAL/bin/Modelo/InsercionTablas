@@ -1,0 +1,45 @@
+INSERT ALL
+INTO DONANTE VALUES (00001,'Julian', 'Sánchez', 'Mateo','DAW',  null,  '50679804D', '5/25/1998', 'España', 'Calle del Rey, 52', 'Leganés',28910, 670348978, 918927898, 'juli_sanch@gmail.com','H')
+INTO DONANTE VALUES (00002,'Maria', 'Gutierrez', 'Perez', 'DAM', null,  '50076804V', '12/18/1994', 'España', 'Calle Grande, 18', 'Valdemoro',28340, 670347804, null , 'maria_guti@hotmail.com','M')
+INTO DONANTE VALUES (00003,'Alejandro', 'Gomez', 'Carpintero', 'DAW',  null,  '50683490N', '1/20/1996', 'España', 'Calle Esmeralda, 23', 'Ciempozuelos',28350, 672487590, 918735467, 'alex_gom@gmail.com','H')
+    
+SELECT * FROM dual;
+
+
+
+INSERT ALL
+INTO FORMULARIO VALUES (00113,'SI','NO','NO','SI','NO','SI','NO','SI','SI','NO','NO','NO','SI','NO','NO','SI','NO','NO','NO','SI','NO','SI','NO','NO','NO','NO','NO','SI','NO','NO','NO',    'NO','NO','NO', '5/20/2020' ,NULL,'APTO')
+INTO FORMULARIO VALUES (00128,'SI','SI','SI','SI','NO','SI','NO','SI','SI','SI','NO','SI','SI','NO','NO','SI','SI','NO','SI','NO','SI','NO','NO','NO','SI','SI','NO','SI','NO','NO','SI',    'NO','NO','NO', '5/22/2020' ,NULL,'APTO')
+INTO FORMULARIO VALUES (00220,'SI','NO','SI','NO','SI','SI','NO','NO','SI','SI','SI','SI','NO','NO','NO','NO','SI','NO','SI','NO','SI','NO','NO','SI','SI','SI','NO','SI','NO','NO','SI',    'NO','NO','NO', '6/04/2020' ,NULL,'APTO')
+    
+SELECT * FROM dual;
+
+
+
+
+INSERT ALL
+INTO DONACION VALUES (00345, 8005, 'SANGRE', 73 ,125,75, 13 ,10,'5/20/2020' )
+INTO DONACION VALUES (00894,0098, 'AFÉRESIS', 90 , 110,82, 17 ,15, '5/22/2020' )
+INTO DONACION VALUES (00940,0909, 'SANGRE', 78 , 120,79,15  , 16, '6/04/2020'  )
+    
+SELECT * FROM dual;
+
+
+
+
+
+INSERT ALL
+INTO REALIZA VALUES (00001, 00345)
+INTO REALIZA VALUES (00002,00894)
+INTO REALIZA VALUES (00003,00940 )
+    
+SELECT * FROM dual;
+
+
+INSERT ALL
+INTO RELLENA VALUES (00001, 00113)
+INTO RELLENA VALUES (00002,00128)
+INTO RELLENA VALUES (00003,00220)
+    
+SELECT * FROM dual;
+
