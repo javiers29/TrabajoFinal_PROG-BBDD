@@ -65,18 +65,9 @@ public class ConexionBBDD {
 		
 	//PANTALLA DONANTE
 	
-	public void GuardarDonante() {
-		
-	}
 	
-	
-	public void EliminarDonante() {
 		
-	}
 	
-	public void EditarDonante() {
-		
-	}
 	public  ObservableList<Donante>  MostrarTablaDonantes() throws SQLException {
 		
 		ObservableList <Donante> listadonantes= FXCollections.observableArrayList();
@@ -128,53 +119,6 @@ public class ConexionBBDD {
 	}
 	
 	
-public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
-		
-		ObservableList <Donacion> listadonacion= FXCollections.observableArrayList();
-		
-		 
-		Statement stm = conexion.createStatement();
-		//Preparo la sentencia SQL 
-		String selectsql= "SELECT * FROM BBDD1DAW.DONACION";
-		
-		//ejecuto sentencia
-		try {
-			ResultSet resultado = stm.executeQuery(selectsql);
-			
-			
-			while(resultado.next()) {
-				
-				Integer num_donacion=(int) resultado.getLong(1);
-				Integer cod_colecta=(int) resultado.getLong(2);
-				String tipo=resultado.getString(3);
-				Integer pulso=(int) resultado.getLong(4);
-				Integer ta_sist=(int) resultado.getLong(5);
-				Integer ta_diast=(int) resultado.getLong(6);
-				Integer hb_cap=(int) resultado.getLong(7);
-				Integer hb_ven=(int) resultado.getLong(8);
-				String fecha=resultado.getString(9);
-				
-				
-				
-				
-				Donacion donacion = new Donacion(num_donacion,cod_colecta,tipo,pulso,ta_sist,ta_diast,hb_cap,hb_ven,fecha);
-				listadonacion.add(donacion);
-				
-				 
-				 
-			}
-		}catch(SQLException sqle) {
-			int pos= sqle.getMessage().indexOf(":");
-			String codeErrorSQL = sqle.getMessage().substring(0, pos);
-		
-			System.out.println(codeErrorSQL);
-			
-		}
-		return listadonacion;
-	}
-
-
-
 
 public void NuevoDonante(Integer num_donante, String nombre,String apellido1, String apellido2, String ciclo, String DNI, String fecha_nac,  String pais_nac, String direccion, String poblacion, Integer cod_postal, Integer tlfn1,Integer tlfn2,String correo_electronico, Character sexo) throws SQLException {
 	
@@ -182,8 +126,25 @@ public void NuevoDonante(Integer num_donante, String nombre,String apellido1, St
 	   
 	   try {
 		
-		String insertdonante = "INSERT INTO BBDD1DAW.DONANTE VALUES ("+ num_donante +", '" + nombre + "', '"+ apellido1 + "', '" + apellido2 + "', '"+ ciclo + "',null, '"+ DNI + "', '" + fecha_nac + "', '"+ pais_nac + "', '"+ direccion + "', '" + poblacion + "', "+ cod_postal + ", "+ tlfn1 + ", " + tlfn2 + ", '"+ correo_electronico + "', '"+ sexo + "')";
+		String insertdonante = "INSERT INTO" + usr +".DONANTE VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		
+		PreparedStatement pstmt = conexion.prepareStatement(insertdonante);
+		
+		pstmt.setInt(1, num_donante);
+		pstmt.setString(2, nombre);
+		pstmt.setString(3, apellido1);
+		pstmt.setString(4, apellido2);
+		pstmt.setString(5, ciclo);
+		pstmt.setString(6, DNI);
+		pstmt.setString(7, fecha_nac);
+		pstmt.setString(8, pais_nac);
+		pstmt.setString(9, direccion);
+		pstmt.setString(10, poblacion);
+		pstmt.setInt(11, cod_postal);
+		pstmt.setInt(12, tlfn1);
+		pstmt.setInt(13, tlfn2);
+		pstmt.setString(14, correo_electronico);
+		pstmt.setString(15, Character.toString(sexo));
 		
 		
 		Statement stm = conn.conexion.createStatement();
@@ -293,16 +254,137 @@ public int BorrarDonante(int num_donante ) throws SQLException{
 	}
 
 }
-	public void CrearCarnetDonante() {
+
+
+public int EditarDonante(Integer num_donante,String nombre, String apellido1, String apellido2, String ciclo, String dni,String fecha_nac,String pais_nac,String direccion, String poblacion,Integer cod_postal, Integer tlfn1, Integer tlfn2,String correo_electronico,Character sexo) throws SQLException{
+
+
+	String fecha_na;
+	// Preparo la sentencia SQL CrearTablaPersonas
+	
+	   String mes=  fecha_nac.substring(3, 5);
+	   String dia= fecha_nac.substring(0, 2);
+	   String año= fecha_nac.substring(6, 10);
+	   
+	   
+	   
+		   if(mes.substring(0, 1).equals("0")) {
+			   mes=  fecha_nac.substring(4, 5);
+			   dia= fecha_nac.substring(0, 2);
+			   año= fecha_nac.substring(6, 10);
+	      	   fecha_na= dia+ "/" + mes + "/" + año;
+				   System.out.println(fecha_na);
+				   
+	}else {
+		fecha_na= dia+ "/" + mes + "/" + año;
+		System.out.println(fecha_na);
+	}
+	   
+	   
+	   
+			   System.out.println(fecha_na);
+	String updatevalores="UPDATE " + usr + ".DONANTE SET nombre = ?,apellido1= ?,apellido2= ?,ciclo= ?, dni= ?,fecha_nac=?,pais_nac= ?, direccion= ?, poblacion= ?,cod_postal= ?,telefono1= ?,telefono2= ?,correo_electronico= ?,sexo= ? WHERE num_donante = ?";
+	 PreparedStatement pstmt = conexion.prepareStatement(updatevalores);
+		pstmt.setString(1, nombre);
+		pstmt.setString(2, apellido1);
+		pstmt.setString(3, apellido2);
+		pstmt.setString(4, ciclo);
+		pstmt.setString(5, dni);
+		pstmt.setString(6, fecha_na);
+		pstmt.setString(7, pais_nac);
+		pstmt.setString(8, direccion);
+		pstmt.setString(9, poblacion);
+		pstmt.setInt(10, cod_postal);
+		pstmt.setInt(11, tlfn1);
+		pstmt.setInt(12, tlfn2);
+		pstmt.setString(13, correo_electronico);
+		pstmt.setString(14, Character.toString(sexo));
+		pstmt.setInt(15, num_donante);
+
+		try{
+			int resultado = pstmt.executeUpdate();
+
+			if(resultado != 1)
+				System.out.println("Error en la actualización " + resultado);
+			else
+				System.out.println("Persona actualizada con éxito!!!");
+
+			return 0;
+		}catch(SQLException sqle){
+
+			int pos = sqle.getMessage().indexOf(":");
+			String codeErrorSQL = sqle.getMessage().substring(0,pos);
+
+			if(codeErrorSQL.equals("ORA-00001") ){
+				System.out.println("Ya existe una persona con  ese Nº de Donante!!");
+				return 1;
+			}
+			else{
+				
+				System.out.println(sqle.toString());;
+				return 2;
+			}
+
+		}
+	
+
+}
+	
+
+
+public void CrearCarnetDonante() {
 		
 	}
 
 	//PANTALLA DONACIONES
 	
-	public void MostrarDonaciones() {
+public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 		
+		ObservableList <Donacion> listadonacion= FXCollections.observableArrayList();
+		
+		 
+		Statement stm = conexion.createStatement();
+		//Preparo la sentencia SQL 
+		String selectsql= "SELECT * FROM " +usr+ ".DONACION";
+		
+		//ejecuto sentencia
+		try {
+			ResultSet resultado = stm.executeQuery(selectsql);
+			
+			
+			while(resultado.next()) {
+				
+				Integer num_donacion=(int) resultado.getLong(1);
+				Integer cod_colecta=(int) resultado.getLong(2);
+				String tipo=resultado.getString(3);
+				Integer pulso=(int) resultado.getLong(4);
+				Integer ta_sist=(int) resultado.getLong(5);
+				Integer ta_diast=(int) resultado.getLong(6);
+				Integer hb_cap=(int) resultado.getLong(7);
+				Integer hb_ven=(int) resultado.getLong(8);
+				String fecha=resultado.getString(9);
+				
+				
+				
+				
+				Donacion donacion = new Donacion(num_donacion,cod_colecta,tipo,pulso,ta_sist,ta_diast,hb_cap,hb_ven,fecha);
+				listadonacion.add(donacion);
+				
+				 
+				 
+			}
+		}catch(SQLException sqle) {
+			int pos= sqle.getMessage().indexOf(":");
+			String codeErrorSQL = sqle.getMessage().substring(0, pos);
+		
+			System.out.println(codeErrorSQL);
+			
+		}
+		return listadonacion;
 	}
-	
+
+
+
 	//PANTALLA FORMULARIO
 	
 	public void GuardarDonacion() {

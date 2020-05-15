@@ -1,13 +1,17 @@
 package Vista;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+
+import com.itextpdf.text.DocumentException;
 
 import Controlador.Main;
 import Modelo.ConexionBBDD;
 import Modelo.Donante;
-import Modelo.Persona;
+import Vista.ImprimeArchivo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -92,9 +96,6 @@ public class ControlDonantes {
 	private Button btReset;
 	
 	@FXML
-	private Button btEditar;
-	
-	@FXML
 	private Button crear_carnet;
 	
 	
@@ -177,7 +178,8 @@ public class ControlDonantes {
 		   ciclo.setValue("");
 		   ciclo.setItems(posiblesciclos);
 		  
-		   
+		   edicion = false;
+		   indiceedicion = 0;
 		  
 			
 			
@@ -193,6 +195,97 @@ public class ControlDonantes {
 				  alert.setContentText("Por favor no dejes ningún campo sin rellenar(excepto TLFN2 si no se dispone)");
 				  alert.showAndWait();
 		   }else {
+			   
+			   if(edicion == true){
+
+					// Hago la llamda al método que hace el update en la base de datos
+					ConexionBBDD con = new ConexionBBDD();
+					Character sexo;
+					   
+					 DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
+					   String fecha_n = fecha_nac.getValue().format(isoFecha);
+					   
+					   //mes-dia-año
+					   String mes=  fecha_n.substring(8, 10);
+					   String dia= fecha_n.substring(5, 7);
+					   String año= fecha_n.substring(0, 4);
+					   
+					   String fecha_na= mes+ "-" + dia + "-" + año;
+		 			   
+					   
+					   
+					   Integer num_donante=Integer.parseInt(this.num_donante.getText());
+					   
+					   String nombre=this.nombre.getText();
+					   String apellido1= this.apellido1.getText();
+					   String apellido2= this.apellido2.getText();
+					   String ciclo=(String) this.ciclo.getValue();
+					   String DNI= this.DNI.getText();
+					  
+					   String pais_nac = this.pais_nac.getText();
+					   String direccion= this.direccion.getText();
+					   String poblacion = this.poblacion.getText();
+					 
+					   Integer cod_postal=Integer.parseInt(this.cod_postal.getText());
+					   Integer tlfn1=Integer.parseInt(this.tlfn1.getText());
+					   Integer tlfn2_int;
+					   
+					   
+					   
+					   if(this.tlfn2.getText().equals("")) {
+						   tlfn2_int=null;
+					   }else {
+					    tlfn2_int=Integer.parseInt(this.tlfn2.getText());
+					   }
+					   
+					  
+					   
+					   
+					   
+					   
+					   String correo_electronico= this.correo_electronico.getText();
+					   
+					   
+					    
+					  
+					   
+					 
+					   
+					   if (this.rbhombre.isSelected()==true) {
+						   sexo='H';
+						   
+					   }else {
+						   sexo='M';
+					   }
+					int res = con.EditarDonante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_na, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2_int, correo_electronico, sexo);
+					switch (res){
+
+						case 0:
+							Alert alert = new Alert(AlertType.INFORMATION);
+							alert.setTitle("OK!");
+							alert.setHeaderText("Modificación OK!");
+							alert.setContentText("¡Donante modificado con éxito!");
+							alert.showAndWait();
+
+							// Actualizo los datos de la tabla
+							datosdonantes = con.ObtenerDonante();
+							tabla_donantes.setItems(datosdonantes);
+							break;
+
+						default:
+								alert = new Alert(AlertType.ERROR);
+								alert.setTitle("Error!");
+								alert.setHeaderText("Modificación NOK!");
+								alert.setContentText("¡Ha habido un problema al realizar la modificación!");
+								alert.showAndWait();
+								break;
+
+							}
+
+
+
+
+				}else {
 		   
 			   
 			   DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
@@ -260,7 +353,7 @@ public class ControlDonantes {
 		   }
 		   }
 	 
-	 
+	 }
 	 
 	 public void reset() {
 		   
@@ -279,6 +372,9 @@ public class ControlDonantes {
 		   this.tlfn2.setText("");
 		   this.correo_electronico.setText("");
 		   this.sexo.selectToggle(null);
+		   
+		   edicion=false;
+		   indiceedicion=0;
 	 }
 	
 	
@@ -333,7 +429,7 @@ public class ControlDonantes {
 			}
 		}
 	 
-	 public void Editar(){
+	 public void EditarDonante(){
 
 
 			int index = tabla_donantes.getSelectionModel().getSelectedIndex();
@@ -346,7 +442,7 @@ public class ControlDonantes {
 				indiceedicion = index;
 
 
-				/*Donante seleccionado = Donante.getSelectionModel().getSelectedItem();
+				Donante seleccionado = tabla_donantes.getSelectionModel().getSelectedItem();
 
 			
 				
@@ -355,47 +451,87 @@ public class ControlDonantes {
 				   nombre.setText(seleccionado.getNombre());
 				   apellido1.setText(seleccionado.getApellido1());;
 				   apellido2.setText(seleccionado.getApellido2());
-				   ciclo.setValue(seleccionado.getCiclo());
+				   ciclo.setValue(seleccionado.getCiclo().toString());
 				   DNI.setText(seleccionado.getDNI());
 				  
 				   pais_nac.setText(seleccionado.getPais_nac());
 				   direccion.setText(seleccionado.getDireccion());
 				   poblacion.setText(seleccionado.getPoblacion());
 				 
-				   cod_postal.setText(this.cod_postal.getText());
+				   cod_postal.setText(seleccionado.getCod_postal().toString());
 				   
-				   String telefono1= (seleccionado.getTelefono1().toString());
-				   tlfn1.setText(telefono1);
+				   tlfn1.setText(String.valueOf(seleccionado.getTelefono1()));
 				   
-				   String telefono2= (seleccionado.getTelefono2().toString());
-				   tlfn2.setText(telefono2);
+				   tlfn2.setText(String.valueOf(seleccionado.getTelefono2()));
 				   
 				   
 				   
 				   if(this.tlfn2.getText().equals("")) {
-					   telefono2=null;
+					   tlfn2=null;
 				   }else {
-				    Integer.parseInt(this.tlfn2.getText());
+				   
 				   }
 
-				   correo_electronico.getText();
+				   correo_electronico.setText(seleccionado.getCorreo_electronico());
 				   
 				   
 				    
-				   Character sexo;
+				   if(seleccionado.getSexo() == 'H')
+						rbhombre.setSelected(true);
+					else
+						rbmujer.setSelected(true);
 				   
-				 
 				   
-				   if (this.rbhombre.isSelected()==true) {
-					   sexo='H';
-					   
-				   }else {
-					   sexo='M';
-				   }
+				   DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
+				   LocalDate fecha_na = LocalDate.parse(seleccionado.getFecha_nac().substring(0, 10));
 				   
+				   
+				   fecha_nac.setValue(fecha_na);
 			}
 		}
-*/
+	 
+	 public void imprimirCarnet() throws FileNotFoundException, DocumentException{
+
+			ImprimeArchivo imprime = new ImprimeArchivo("CarnetDonante "+ nombre.getText() , "C:\\Users\\Jorge\\Desktop\\JAVIER DAW\\PROGRAMACIÓN\\DONANTES\\");
+			
+			
+			int index = tabla_donantes.getSelectionModel().getSelectedIndex();
+			if(index>=0) {
+				
+
+				Donante seleccionado = tabla_donantes.getSelectionModel().getSelectedItem();
+
+			
+				
+				Integer seleccnum_don = (seleccionado.getNum_donante());
+				String selecnombre= (seleccionado.getNombre());
+				String selecapellido1=(seleccionado.getApellido1());;
+				String selecapellido2=(seleccionado.getApellido2());
+				String selecfecha=(seleccionado.getFecha_nac().substring(0, 10));
+				String selecpaisna= (seleccionado.getPais_nac());
+				Integer selectlfn= (seleccionado.getTelefono1());
+				
+				
+			
+			imprime.generarArchivoPDF(seleccnum_don, selecnombre, selecapellido1, selecapellido2, selecfecha, selecpaisna, selectlfn);
+			
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Carnet creado con exito");
+			alert.setHeaderText("El carnet de "+ seleccionado.getNombre() +" se ha creado");
+			alert.setContentText("Carnet correctamente creado en la carpeta DONANTE");
+			alert.showAndWait();
+			
+			}else {
+				
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText("No has seleccionado ningun Donante para crear un Carnet");
+				alert.setContentText("Haz click en la tabla para seleccionar un donante");
+				alert.showAndWait();
+				
+			}
+		}
+
 
 	public void setStagePrincipal(Stage VentanaDonantes) {
 		// TODO Auto-generated method stub
