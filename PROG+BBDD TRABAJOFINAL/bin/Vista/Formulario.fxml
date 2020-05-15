@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
@@ -55,8 +57,6 @@
       </RadioButton>
       <RadioButton fx:id="rb_excluyente" layoutX="142.0" layoutY="660.0" mnemonicParsing="false" text="EXCLUYENTE" toggleGroup="$ESTADO" />
       <TextField fx:id="cod_formulario" layoutX="115.0" layoutY="502.0" />
-      <TextField fx:id="fecha_formulario" layoutX="115.0" layoutY="531.0" />
-      <TextField fx:id="fecha_exclusion" layoutX="115.0" layoutY="559.0" />
       <Button fx:id="guardarFormulario" layoutX="371.0" layoutY="552.0" mnemonicParsing="false" onAction="#GuardarFormulario" prefHeight="85.0" prefWidth="247.0" text="GUARDAR FORMULARIO" textFill="#2f589e">
          <font>
             <Font size="18.0" />
@@ -316,6 +316,8 @@
          </font>
       </Label>
       <Label layoutX="15.0" layoutY="595.0" text="Nº Donante" />
-      <TextField fx:id="num_donante" layoutX="115.0" layoutY="588.0" />
+      <DatePicker fx:id="fecha_formulario" layoutX="115.0" layoutY="531.0" />
+      <DatePicker fx:id="fecha_exclusion" layoutX="115.0" layoutY="559.0" />
+      <ComboBox fx:id="num_donante" layoutX="115.0" layoutY="591.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

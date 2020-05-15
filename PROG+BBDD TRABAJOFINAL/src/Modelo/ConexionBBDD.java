@@ -120,15 +120,17 @@ public class ConexionBBDD {
 	
 	
 
-public void NuevoDonante(Integer num_donante, String nombre,String apellido1, String apellido2, String ciclo, String DNI, String fecha_nac,  String pais_nac, String direccion, String poblacion, Integer cod_postal, Integer tlfn1,Integer tlfn2,String correo_electronico, Character sexo) throws SQLException {
+public void NuevoDonante(Integer num_donante, String nombre,String apellido1, String apellido2, String ciclo, String DNI, String fecha_na,  String pais_nac, String direccion, String poblacion, Integer cod_postal, Integer tlfn1,Integer tlfn2,String correo_electronico, Character sexo) throws SQLException {
 	
 	ConexionBBDD conn = new ConexionBBDD();
 	   
 	   try {
 		
-		String insertdonante = "INSERT INTO" + usr +".DONANTE VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String insertdonante = "INSERT INTO " + usr +".DONANTE VALUES ("+num_donante+",'"+nombre+"','"+apellido1+"','"+apellido2+"','"+ciclo+"',null,'"+DNI+"','"+fecha_na+"','"+pais_nac+"','"+direccion+"','"+poblacion+"',"+cod_postal+","+tlfn1+","+tlfn2+",'"+correo_electronico+"','"+sexo+"')";
 		
-		PreparedStatement pstmt = conexion.prepareStatement(insertdonante);
+		/*PreparedStatement pstmt = conexion.prepareStatement(insertdonante);
+		
+		
 		
 		pstmt.setInt(1, num_donante);
 		pstmt.setString(2, nombre);
@@ -136,7 +138,7 @@ public void NuevoDonante(Integer num_donante, String nombre,String apellido1, St
 		pstmt.setString(4, apellido2);
 		pstmt.setString(5, ciclo);
 		pstmt.setString(6, DNI);
-		pstmt.setString(7, fecha_nac);
+		pstmt.setString(7, fecha_na);
 		pstmt.setString(8, pais_nac);
 		pstmt.setString(9, direccion);
 		pstmt.setString(10, poblacion);
@@ -144,7 +146,7 @@ public void NuevoDonante(Integer num_donante, String nombre,String apellido1, St
 		pstmt.setInt(12, tlfn1);
 		pstmt.setInt(13, tlfn2);
 		pstmt.setString(14, correo_electronico);
-		pstmt.setString(15, Character.toString(sexo));
+		pstmt.setString(15, Character.toString(sexo));*/
 		
 		
 		Statement stm = conn.conexion.createStatement();
@@ -164,6 +166,7 @@ public void NuevoDonante(Integer num_donante, String nombre,String apellido1, St
 				  alert1.setContentText("El Nº de Donante que estas introduciendo ya figura en nuestra base de datos.");
 				  alert1.showAndWait();
 			}else {
+				System.out.println(sqle.toString());
 				Alert alert1 = new Alert (AlertType.INFORMATION);
 				  alert1.setTitle("ERROR");
 				  alert1.setContentText("Se ha producido un error en la inserción de datos.");
@@ -387,11 +390,83 @@ public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 
 	//PANTALLA FORMULARIO
 	
-	public void GuardarDonacion() {
+
+	public void NuevaDonacion(Integer cod_form, String UNO,String DOS, String TRES, String CUATRO, String CINCO, String SEIS,  String SIETE, String OCHO, String NUEVE, String DIEZ,  String ONCE, String DOCE, String TRECE, String CATORCE,  String QUINCE, String DIECISEIS, String DIECISIETE, String DIECIOCHO,  String DIECINUEVE, String VEINTE, String VEINTIUNO, String VEINTIDOS,  String VEINTITRES, String VEINTICUATRO, String VEINTICINCO, String VEINTISEIS,  String VEINTISIETE, String VEINTIOCHO, String VEINTINUEVE, String TREINTA,  String TREINTAYUNO, String TREINTAYDOS, String PEX1, String PEX2,  String PEX3, String fecha_formu, String fecha_excl,String ESTADO,Integer num_donante) throws SQLException {
+	
+	ConexionBBDD conn = new ConexionBBDD();
+	
+	String insertformulario = "INSERT INTO " + usr +".FORMULARIO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+	
+	PreparedStatement pstmt = conexion.prepareStatement(insertformulario);
+	pstmt.setInt(1, cod_form);
+	pstmt.setString(2, UNO);
+	pstmt.setString(3, DOS);
+	pstmt.setString(4, TRES);
+	pstmt.setString(5, CUATRO);
+	pstmt.setString(6, CINCO);
+	pstmt.setString(7, SEIS);
+	pstmt.setString(8, SIETE);
+	pstmt.setString(9, OCHO);
+	pstmt.setString(10, NUEVE);
+	pstmt.setString(11, DIEZ);
+	pstmt.setString(12, ONCE);
+	pstmt.setString(13, DOCE);
+	pstmt.setString(14, TRECE);
+	pstmt.setString(15, CATORCE);
+	pstmt.setString(16, DIECISEIS);
+	pstmt.setString(17, DIECISIETE);
+	pstmt.setString(18, DIECIOCHO);
+	pstmt.setString(19, DIECINUEVE);
+	pstmt.setString(20, VEINTE);
+	pstmt.setString(21, VEINTIUNO);
+	pstmt.setString(22, VEINTIDOS);
+	pstmt.setString(23, VEINTITRES);
+	pstmt.setString(24, VEINTICUATRO);
+	pstmt.setString(25, VEINTICINCO);
+	pstmt.setString(26, VEINTISEIS);
+	pstmt.setString(27, VEINTISIETE);
+	pstmt.setString(28, VEINTIOCHO);
+	pstmt.setString(29, VEINTINUEVE);
+	pstmt.setString(30, TREINTA);
+	pstmt.setString(31, TREINTAYUNO);
+	pstmt.setString(32, TREINTAYDOS);
+	pstmt.setString(33, PEX1);
+	pstmt.setString(34, PEX2);
+	pstmt.setString(35, PEX3);
+	pstmt.setString(36, TREINTA);
+	pstmt.setString(37, fecha_formu);
+	pstmt.setString(38, fecha_excl);
+	pstmt.setString(39, ESTADO);
+	pstmt.setInt(40, num_donante);
+	
+	try {
+	Statement stm = conn.conexion.createStatement();
+	int resultado = stm.executeUpdate(insertformulario);
+	if(resultado == 1) {
+		String insertRellena = "INSERT INTO " + usr +".RELLENA VALUES (?,?)";
+		pstmt.setInt(1, cod_form);
+		pstmt.setInt(2, num_donante);
 		
+		Alert alert1 = new Alert (AlertType.INFORMATION);
+		  alert1.setTitle("FORMULARIO GUARDADO CORRECTAMENTE");
+		  alert1.setContentText("El nuevo formulario se ha añadido correctamente a la base de datos, tambien se ha actualizado la tabla relación.");
+		  alert1.showAndWait();
+	}else {
+		
+		Alert alert1 = new Alert (AlertType.INFORMATION);
+		  alert1.setTitle("ERROR");
+		  alert1.setContentText("Se ha producido un error en la inserción de datos.");
+		  alert1.showAndWait();
+	}}catch(SQLException sqle){
+		System.out.println(sqle.toString());
 	}
 	
 	
+	
+	
+	
+	
+	}
 	//PANTALLA INFORMES
 	
 	public void MostrarInformeDonantes() {

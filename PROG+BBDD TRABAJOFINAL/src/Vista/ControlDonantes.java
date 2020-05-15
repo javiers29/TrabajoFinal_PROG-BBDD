@@ -288,15 +288,15 @@ public class ControlDonantes {
 				}else {
 		   
 			   
-			   DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
-			   String fecha_n = fecha_nac.getValue().format(isoFecha);
-			   
-			   //mes-dia-año
-			   String mes=  fecha_n.substring(8, 10);
-			   String dia= fecha_n.substring(5, 7);
-			   String año= fecha_n.substring(0, 4);
-			   
-			   String fecha_na= mes+ "-" + dia + "-" + año;
+					DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
+					   String fecha_n = fecha_nac.getValue().format(isoFecha);
+					   
+					   //mes-dia-año
+					   String mes=  fecha_n.substring(8, 10);
+					   String dia= fecha_n.substring(5, 7);
+					   String año= fecha_n.substring(0, 4);
+					   
+					   String fecha_na= mes+ "-" + dia + "-" + año;
  			   
 			   
 			   

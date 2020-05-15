@@ -57,6 +57,8 @@ CREATE TABLE FORMULARIO (
     p29 VARCHAR2 (2) NOT NULL,
     p30 VARCHAR2 (2) NOT NULL,
     p31 VARCHAR2 (2) NOT NULL,
+    p32 VARCHAR2 (2) NOT NULL,
+    
     
     pex1 VARCHAR (2) NOT NULL,
     pex2 VARCHAR (2) NOT NULL,
@@ -64,7 +66,8 @@ CREATE TABLE FORMULARIO (
     
     fecha_form DATE NOT NULL,
     fecha_exclusion DATE,
-    estado_donacion VARCHAR2(10) NOT NULL
+    estado_donacion VARCHAR2(10) NOT NULL,
+    num_donante NUMBER(10) NOT NULL
     );
 
 
@@ -78,7 +81,8 @@ CREATE TABLE DONACION (
     TA_diast NUMBER(10) NOT NULL,
     Hb_cap NUMBER(10) NOT NULL,
     Hb_ven NUMBER(10) NOT NULL,
-    Fecha DATE NOT NULL
+    Fecha DATE NOT NULL,
+    grupo_sang VARCHAR2(12) NOT NULL
     );
 
 DROP TABLE REALIZA CASCADE CONSTRAINT;
@@ -97,6 +101,8 @@ CREATE TABLE RELLENA (
     codigo_form NUMBER(10) NOT NULL ,
     CONSTRAINT rellena_pk PRIMARY KEY (num_Donante, codigo_form),
     CONSTRAINT rellena_fk1 FOREIGN KEY (num_Donante) REFERENCES DONANTE(num_Donante) ON DELETE CASCADE,
-    CONSTRAINT rellena_fk2 FOREIGN KEY ( codigo_form) REFERENCES FORMULARIO(codigo_form) ON DELETE CASCADE
+    CONSTRAINT rellena_fk2 FOREIGN KEY (codigo_form) REFERENCES FORMULARIO(codigo_form) ON DELETE CASCADE
     
     );
+
+ ​
