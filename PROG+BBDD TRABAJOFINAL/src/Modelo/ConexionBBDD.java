@@ -320,6 +320,8 @@ public int EditarDonante(Integer num_donante,String nombre, String apellido1, St
 
 			if(codeErrorSQL.equals("ORA-00001") ){
 				System.out.println("Ya existe una persona con  ese Nº de Donante!!");
+				
+				
 				return 1;
 			}
 			else{
@@ -391,13 +393,19 @@ public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 	//PANTALLA FORMULARIO
 	
 
-	public void NuevaDonacion(Integer cod_form, String UNO,String DOS, String TRES, String CUATRO, String CINCO, String SEIS,  String SIETE, String OCHO, String NUEVE, String DIEZ,  String ONCE, String DOCE, String TRECE, String CATORCE,  String QUINCE, String DIECISEIS, String DIECISIETE, String DIECIOCHO,  String DIECINUEVE, String VEINTE, String VEINTIUNO, String VEINTIDOS,  String VEINTITRES, String VEINTICUATRO, String VEINTICINCO, String VEINTISEIS,  String VEINTISIETE, String VEINTIOCHO, String VEINTINUEVE, String TREINTA,  String TREINTAYUNO, String TREINTAYDOS, String PEX1, String PEX2,  String PEX3, String fecha_formu, String fecha_excl,String ESTADO,Integer num_donante) throws SQLException {
-	
+	public void NuevoFormulario(Integer cod_form, String UNO,String DOS, String TRES, String CUATRO, String CINCO, String SEIS,  String SIETE, String OCHO, String NUEVE, String DIEZ,  String ONCE, String DOCE, String TRECE, String CATORCE,  String QUINCE, String DIECISEIS, String DIECISIETE, String DIECIOCHO,  String DIECINUEVE, String VEINTE, String VEINTIUNO, String VEINTIDOS,  String VEINTITRES, String VEINTICUATRO, String VEINTICINCO, String VEINTISEIS,  String VEINTISIETE, String VEINTIOCHO, String VEINTINUEVE, String TREINTA,  String TREINTAYUNO, String TREINTAYDOS, String PEX1, String PEX2,  String PEX3, String fecha_formu, String fecha_excl,String ESTADO,Integer num_donante) throws SQLException {
+	System.out.println(fecha_excl);
 	ConexionBBDD conn = new ConexionBBDD();
+	String insertformulario;
+	if(fecha_excl.equals("--")) {
+		insertformulario = "INSERT INTO " + usr +".FORMULARIO VALUES ("+cod_form+",'"+UNO+"','"+DOS+"','"+TRES+"','"+CUATRO+"','"+CINCO+"','"+SEIS+"','"+SIETE+"','"+OCHO+"','"+NUEVE+"','"+DIEZ+"','"+ONCE+"','"+DOCE+"','"+TRECE+"','"+CATORCE+"','"+QUINCE+"','"+DIECISEIS+"','"+DIECISIETE+"','"+DIECIOCHO+"','"+DIECINUEVE+"','"+VEINTE+"','"+VEINTIUNO+"','"+VEINTIDOS+"','"+VEINTITRES+"','"+VEINTICUATRO+"','"+VEINTICINCO+"','"+VEINTISEIS+"','"+VEINTISIETE+"','"+VEINTIOCHO+"','"+VEINTINUEVE+"','"+TREINTA+"','"+TREINTAYUNO+"','"+TREINTAYDOS+"','"+PEX1+"','"+PEX2+"','"+PEX3+"','"+fecha_formu+"',"+null+",'"+ESTADO+"',"+num_donante+")";
+	}else {
+		insertformulario = "INSERT INTO " + usr +".FORMULARIO VALUES ("+cod_form+",'"+UNO+"','"+DOS+"','"+TRES+"','"+CUATRO+"','"+CINCO+"','"+SEIS+"','"+SIETE+"','"+OCHO+"','"+NUEVE+"','"+DIEZ+"','"+ONCE+"','"+DOCE+"','"+TRECE+"','"+CATORCE+"','"+QUINCE+"','"+DIECISEIS+"','"+DIECISIETE+"','"+DIECIOCHO+"','"+DIECINUEVE+"','"+VEINTE+"','"+VEINTIUNO+"','"+VEINTIDOS+"','"+VEINTITRES+"','"+VEINTICUATRO+"','"+VEINTICINCO+"','"+VEINTISEIS+"','"+VEINTISIETE+"','"+VEINTIOCHO+"','"+VEINTINUEVE+"','"+TREINTA+"','"+TREINTAYUNO+"','"+TREINTAYDOS+"','"+PEX1+"','"+PEX2+"','"+PEX3+"','"+fecha_formu+"','"+fecha_excl+"','"+ESTADO+"',"+num_donante+")";
+	}
+	try {
 	
-	String insertformulario = "INSERT INTO " + usr +".FORMULARIO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	
-	PreparedStatement pstmt = conexion.prepareStatement(insertformulario);
+	/*PreparedStatement pstmt = conexion.prepareStatement(insertformulario);
 	pstmt.setInt(1, cod_form);
 	pstmt.setString(2, UNO);
 	pstmt.setString(3, DOS);
@@ -413,40 +421,43 @@ public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 	pstmt.setString(13, DOCE);
 	pstmt.setString(14, TRECE);
 	pstmt.setString(15, CATORCE);
-	pstmt.setString(16, DIECISEIS);
-	pstmt.setString(17, DIECISIETE);
-	pstmt.setString(18, DIECIOCHO);
-	pstmt.setString(19, DIECINUEVE);
-	pstmt.setString(20, VEINTE);
-	pstmt.setString(21, VEINTIUNO);
-	pstmt.setString(22, VEINTIDOS);
-	pstmt.setString(23, VEINTITRES);
-	pstmt.setString(24, VEINTICUATRO);
-	pstmt.setString(25, VEINTICINCO);
-	pstmt.setString(26, VEINTISEIS);
-	pstmt.setString(27, VEINTISIETE);
-	pstmt.setString(28, VEINTIOCHO);
-	pstmt.setString(29, VEINTINUEVE);
-	pstmt.setString(30, TREINTA);
-	pstmt.setString(31, TREINTAYUNO);
-	pstmt.setString(32, TREINTAYDOS);
-	pstmt.setString(33, PEX1);
-	pstmt.setString(34, PEX2);
-	pstmt.setString(35, PEX3);
-	pstmt.setString(36, TREINTA);
+	pstmt.setString(16, QUINCE);
+	pstmt.setString(17, DIECISEIS);
+	pstmt.setString(18, DIECISIETE);
+	pstmt.setString(19, DIECIOCHO);
+	pstmt.setString(20, DIECINUEVE);
+	pstmt.setString(21, VEINTE);
+	pstmt.setString(22, VEINTIUNO);
+	pstmt.setString(23, VEINTIDOS);
+	pstmt.setString(24, VEINTITRES);
+	pstmt.setString(25, VEINTICUATRO);
+	pstmt.setString(26, VEINTICINCO);
+	pstmt.setString(27, VEINTISEIS);
+	pstmt.setString(28, VEINTISIETE);
+	pstmt.setString(29, VEINTIOCHO);
+	pstmt.setString(30, VEINTINUEVE);
+	pstmt.setString(31, TREINTA);
+	pstmt.setString(32, TREINTAYUNO);
+	pstmt.setString(33, TREINTAYDOS);
+	pstmt.setString(34, PEX1);
+	pstmt.setString(35, PEX2);
+	pstmt.setString(36, PEX3);
 	pstmt.setString(37, fecha_formu);
 	pstmt.setString(38, fecha_excl);
 	pstmt.setString(39, ESTADO);
 	pstmt.setInt(40, num_donante);
+	*/
 	
-	try {
+	
 	Statement stm = conn.conexion.createStatement();
 	int resultado = stm.executeUpdate(insertformulario);
 	if(resultado == 1) {
-		String insertRellena = "INSERT INTO " + usr +".RELLENA VALUES (?,?)";
-		pstmt.setInt(1, cod_form);
+		String insertRellena = "INSERT INTO " + usr +".RELLENA VALUES ("+num_donante+","+cod_form+")";
+		stm = conn.conexion.createStatement();
+		stm.executeUpdate(insertRellena);
+		/*pstmt.setInt(1, cod_form);
 		pstmt.setInt(2, num_donante);
-		
+		*/
 		Alert alert1 = new Alert (AlertType.INFORMATION);
 		  alert1.setTitle("FORMULARIO GUARDADO CORRECTAMENTE");
 		  alert1.setContentText("El nuevo formulario se ha añadido correctamente a la base de datos, tambien se ha actualizado la tabla relación.");

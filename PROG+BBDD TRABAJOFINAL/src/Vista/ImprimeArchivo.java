@@ -10,6 +10,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -37,6 +38,8 @@ public class ImprimeArchivo {
 
 		// Se crea el documento que se va a imprimir
 		Document PDFdonante = new Document();
+		PDFdonante.setPageSize(PageSize.POSTCARD);
+		
 
 
 		// En principio el tamaño de la página está paara un A4 en vertical, pero puedes investigar y cambiar el tamaño de la zona de impresión
@@ -58,9 +61,9 @@ public class ImprimeArchivo {
 		// La unidad para imprimir es el párrafo se pasa el texto del párrafo, se pueden poner saltos de línea dentro
 		// el tipo, tamaño de letra y si es en negrita (BOLD), cursiva (ITALIC), en cursivaNEgrita (BOLDITALIC) o normal (NORMAL)
 
-		Paragraph p1 = new Paragraph("CARNET DE DONANTE",
+		Paragraph p1 = new Paragraph("CARNET DE DONANTE ",
 		FontFactory.getFont("arial",   // fuente
-		11,                            // tamaño
+		14,                            // tamaño
 		Font.BOLD));
 
 		// Una vez creado el párrafo puedes modificar varias opciones... como aquí la alineación
@@ -71,9 +74,9 @@ public class ImprimeArchivo {
 		PDFdonante.add(p1);
 
 
-		Paragraph p2 = new Paragraph("Numero de Donante: "+ num_donante +"\n Nombre: "+nombre+"\n Primer Apellido: "+apellido1+"\n Segundo Apellido: "+apellido2+"\n Fecha nacimiento: " + fecha_nac + "\n Pais Nacimiento: "+pais_nac+ "\n Telefono: " + tlfn1,
+		Paragraph p2 = new Paragraph("\n Numero de Donante: "+ num_donante +"\n Nombre: "+nombre+"\n Primer Apellido: "+apellido1+"\n Segundo Apellido: "+apellido2+"\n Fecha nacimiento: " + fecha_nac + "\n Pais Nacimiento: "+pais_nac+ "\n Telefono: " + tlfn1,
 				FontFactory.getFont("Garamond",   // fuente
-				14,                            // tamaño
+				13,                            // tamaño
 				Font.ITALIC));
 
 		// Una vez creado el párrafo puedes modificar varias opciones... como aquí la alineación

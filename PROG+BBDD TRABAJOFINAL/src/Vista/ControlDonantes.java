@@ -200,7 +200,7 @@ public class ControlDonantes {
 
 					// Hago la llamda al método que hace el update en la base de datos
 					ConexionBBDD con = new ConexionBBDD();
-					Character sexo;
+					Character sexo = null;
 					   
 					 DateTimeFormatter isoFecha = DateTimeFormatter.ISO_LOCAL_DATE;
 					   String fecha_n = fecha_nac.getValue().format(isoFecha);
@@ -255,7 +255,15 @@ public class ControlDonantes {
 						   sexo='H';
 						   
 					   }else {
+						   if(this.rbmujer.isSelected()==true) {
 						   sexo='M';
+						   }else {
+							   Alert alert = new Alert (AlertType.INFORMATION);
+								  alert.setTitle("Error en relleno de datos");
+								  alert.setHeaderText("FALTAN CAMPOS POR RELLENAR:");
+								  alert.setContentText("Por favor no dejes ningún campo sin rellenar(excepto TLFN2 si no se dispone)");
+								  alert.showAndWait();
+						   }
 					   }
 					int res = con.EditarDonante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_na, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2_int, correo_electronico, sexo);
 					switch (res){
@@ -278,6 +286,8 @@ public class ControlDonantes {
 								alert.setHeaderText("Modificación NOK!");
 								alert.setContentText("¡Ha habido un problema al realizar la modificación!");
 								alert.showAndWait();
+								datosdonantes = con.ObtenerDonante();
+								tabla_donantes.setItems(datosdonantes);
 								break;
 
 							}
@@ -347,6 +357,10 @@ public class ControlDonantes {
 			   Donante DonanteNuevo= new Donante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_na, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2_int, correo_electronico, sexo);
 			   this.datosdonantes.add(DonanteNuevo);
 			   this.tabla_donantes.setItems(this.datosdonantes);
+			  
+			   ConexionBBDD con = new ConexionBBDD();
+			   datosdonantes = con.ObtenerDonante();
+				tabla_donantes.setItems(datosdonantes);
 			
 				conn.NuevoDonante(num_donante, nombre, apellido1, apellido2, ciclo, DNI, fecha_na, pais_nac, direccion, poblacion, cod_postal, tlfn1, tlfn2_int, correo_electronico, sexo);
 				conn.MostrarTablaDonantes();

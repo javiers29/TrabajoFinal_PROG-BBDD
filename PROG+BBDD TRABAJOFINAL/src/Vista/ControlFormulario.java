@@ -3,6 +3,7 @@ package Vista;
 
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 import Controlador.Main;
 import Modelo.ConexionBBDD;
@@ -11,12 +12,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class ControlFormulario {
@@ -285,15 +289,10 @@ public class ControlFormulario {
 		private DatePicker fecha_exclusion;
 		
 		@FXML
-		private ComboBox num_donante;
+		private TextField num_donante;
 		 
 		
-		@FXML
-		private RadioButton rb_apto;
-		@FXML
-		private RadioButton rb_excluyente;
-		@FXML
-		private ToggleGroup ESTADO;
+		
 		
 		
 		@FXML
@@ -322,16 +321,24 @@ public class ControlFormulario {
 
 		
 		
+		
 		public void GuardarFormulario() throws SQLException {
 			
 			
-			 Integer cod_formulario=Integer.parseInt(this.cod_formulario.getText());
+			
+				String fecha=this.fecha_exclusion.getValue().toString();
+				System.out.println(fecha);
+		
+			String ESTADO="APTO";
+			 Integer cod_formulario=Integer.parseInt(this.cod_formulario.getText().toString());
 			String UNO;
 			if (this.P1.isSelected()==true) {
 				   UNO="SI";
 				   
 			   }else {
 				   UNO="NO";
+				   ESTADO="EXCL_TEMP";
+					
 			   }
 			
 			String DOS;
@@ -347,6 +354,8 @@ public class ControlFormulario {
 				   
 			   }else {
 				   TRES="NO";
+				   ESTADO="EXCL_TEMP";
+					
 			   }
 			String CUATRO;
 			if (this.P4.isSelected()==true) {
@@ -358,6 +367,19 @@ public class ControlFormulario {
 			String CINCO;
 			if (this.P5.isSelected()==true) {
 				   CINCO="SI";
+				   Alert alert = new Alert(AlertType.CONFIRMATION);
+					alert.setTitle("!ATENCIÓN!");
+					alert.setHeaderText("Al contestar en la pregunta nº5 que ha realizado una donacion en los últimos 12 meses como 'SI' es necesario que responda a la siguiente cuestión");
+					alert.setContentText("¿Han transcurrido más de dos meses desde su última donación?");
+
+					Optional<ButtonType> result = alert.showAndWait();
+					if (result.get() == ButtonType.OK){
+						
+					}else {
+						
+						ESTADO="EXCL_TEMP";
+						
+					}
 				   
 			   }else {
 				   CINCO="NO";
@@ -407,7 +429,8 @@ public class ControlFormulario {
 			String DOCE;
 			if (this.P12.isSelected()==true) {
 				   DOCE="SI";
-				   
+				   ESTADO="EXCL_TEMP";
+					
 			   }else {
 				   DOCE="NO";
 			   }
@@ -421,7 +444,8 @@ public class ControlFormulario {
 			String CATORCE;
 			if (this.P14.isSelected()==true) {
 				   CATORCE="SI";
-				   
+				   ESTADO="EXCL_TEMP";
+					
 			   }else {
 				   CATORCE="NO";
 			   }
@@ -435,14 +459,16 @@ public class ControlFormulario {
 			String DIECISEIS;
 			if (this.P16.isSelected()==true) {
 				   DIECISEIS="SI";
-				   
+				   ESTADO="EXCL_TEMP";
+					
 			   }else {
 				   DIECISEIS="NO";
 			   }
 			String DIECISIETE;
 			if (this.P17.isSelected()==true) {
 				   DIECISIETE="SI";
-				   
+				   ESTADO="EXCL_TEMP";
+					
 			   }else {
 				   DIECISIETE="NO";
 			   }
@@ -556,21 +582,21 @@ public class ControlFormulario {
 			String PEX1;
 			if (this.pex1.isSelected()==true) {
 				   PEX1="SI";
-				   
+				   ESTADO="EXCLUYENTE";
 			   }else {
 				   PEX1="NO";
 			   }
 			String PEX2;
 			if (this.pex1.isSelected()==true) {
 				   PEX2="SI";
-				   
+				   ESTADO="EXCLUYENTE";
 			   }else {
 				   PEX2="NO";
 			   }
 			String PEX3;
 			if (this.pex1.isSelected()==true) {
 				   PEX3="SI";
-				   
+				   ESTADO="EXCLUYENTE";
 			   }else {
 				   PEX3="NO";
 			   }
@@ -596,18 +622,33 @@ public class ControlFormulario {
 			   String fecha_excl= mesex+ "-" + diaex + "-" + añoex;
 			
 			   
-			   String ESTADO;
-				if (this.rb_apto.isSelected()==true) {
-					   ESTADO="APTO";
-					   
-				   }else {
-					   ESTADO="EXCLUYENTE";
-				   }
+			   
+				
 			
-				Integer num_donan=7;
+				Integer num_donan=Integer.parseInt(num_donante.getText().toString());
 				ConexionBBDD con = new ConexionBBDD();
-				con.NuevaDonacion(cod_formulario, UNO, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, ONCE, DOCE, TRECE, CATORCE, QUINCE, DIECISEIS, DIECISIETE, DIECIOCHO, DIECINUEVE, VEINTE, VEINTIUNO, VEINTIDOS, VEINTITRES, VEINTICUATRO, VEINTICINCO, VEINTISEIS, VEINTISIETE, VEINTIOCHO, VEINTINUEVE, TREINTA, TREINTAYUNO, TREINTAYDOS, PEX1, PEX2, PEX3, fecha_formu, fecha_excl, ESTADO,num_donan);
-			
+				con.NuevoFormulario(cod_formulario, UNO, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, ONCE, DOCE, TRECE, CATORCE, QUINCE, DIECISEIS, DIECISIETE, DIECIOCHO, DIECINUEVE, VEINTE, VEINTIUNO, VEINTIDOS, VEINTITRES, VEINTICUATRO, VEINTICINCO, VEINTISEIS, VEINTISIETE, VEINTIOCHO, VEINTINUEVE, TREINTA, TREINTAYUNO, TREINTAYDOS, PEX1, PEX2, PEX3, fecha_formu, fecha_excl, ESTADO,num_donan);
+					if(ESTADO.equals("APTO")) {
+						Alert alert = new Alert(AlertType.INFORMATION);
+						alert.setTitle("APTO");
+						alert.setHeaderText("Su estado para la donación es APTO");
+						alert.setContentText("");
+						alert.showAndWait();
+					}else {
+						if(ESTADO.equals("EXCL_TEMP")) {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("EXCLUYENTE TEMPORAL");
+							alert.setHeaderText("Su estado para la donación es EXCLUYENTE TEMPORAL");
+							alert.setContentText("Lo sentimos, pero no puede realizar ninguna donación de manera temporal");
+							alert.showAndWait();
+						}else {
+							Alert alert = new Alert(AlertType.WARNING);
+							alert.setTitle("EXCLUYENTE");
+							alert.setHeaderText("Su estado para la donación es EXCLUYENTE");
+							alert.setContentText("Lo sentimos, pero no puede realizar ninguna donación");
+							alert.showAndWait();
+						}
+					}
 			
 			this.VentanaFormulario.close();
 			this.MenuPrincipal.mostrarVentanaDonaciones();
