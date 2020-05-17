@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import Controlador.Main;
 import Modelo.ConexionBBDD;
+import Modelo.Donacion;
 import Modelo.Donante;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,12 +16,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class ControlFormulario {
@@ -288,8 +291,7 @@ public class ControlFormulario {
 		@FXML
 		private DatePicker fecha_exclusion;
 		
-		@FXML
-		private TextField num_donante;
+		
 		 
 		
 		
@@ -302,12 +304,22 @@ public class ControlFormulario {
 		
 		private Stage VentanaFormulario;
 		
-		
+		@FXML
+		private ChoiceBox<Integer> num_donante;
+		ObservableList<Integer> DATOSnum_donantes = FXCollections.observableArrayList();
 		
 		private  Main MenuPrincipal;
+		ConexionBBDD conn;
 		
 		
-		
+		public void MostrarNumDonantes() throws SQLException {
+			 conn = new ConexionBBDD();
+			
+			   
+			   DATOSnum_donantes =conn.SelectNumDonantes();
+			   this.num_donante.setItems(DATOSnum_donantes);
+			   
+		   }
 
 
 		public void setStagePrincipal(Stage VentanaFormulario) {
@@ -323,9 +335,13 @@ public class ControlFormulario {
 		
 		
 		public void GuardarFormulario() throws SQLException {
-			
-			
-			
+			if(cod_formulario.getText().equals("") || fecha_formulario==null || num_donante==null || UNO==null || DOS==null || TRES==null || CUATRO==null || CINCO==null || SEIS==null || SIETE==null || OCHO==null ||NUEVE==null||DIEZ==null||ONCE==null||DOCE==null||TRECE==null || CATORCE==null|| QUINCE==null || DIECISEIS==null || DIECISIETE==null || DIECIOCHO==null|| DIECINUEVE==null ||VEINTE==null||VEINTIUNO==null) {
+				 Alert alert = new Alert (AlertType.INFORMATION);
+				  alert.setTitle("Error en relleno de datos");
+				  alert.setHeaderText("FALTAN CAMPOS POR RELLENAR:");
+				  alert.setContentText("Por favor no dejes ningún campo sin rellenar, este formulario no se guardará, se abrirá la ventana donaciones");
+				  alert.showAndWait();
+			}else {
 				String fecha=this.fecha_exclusion.getValue().toString();
 				System.out.println(fecha);
 		
@@ -625,7 +641,7 @@ public class ControlFormulario {
 			   
 				
 			
-				Integer num_donan=Integer.parseInt(num_donante.getText().toString());
+				Integer num_donan=Integer.parseInt(num_donante.getValue().toString());
 				ConexionBBDD con = new ConexionBBDD();
 				con.NuevoFormulario(cod_formulario, UNO, DOS, TRES, CUATRO, CINCO, SEIS, SIETE, OCHO, NUEVE, DIEZ, ONCE, DOCE, TRECE, CATORCE, QUINCE, DIECISEIS, DIECISIETE, DIECIOCHO, DIECINUEVE, VEINTE, VEINTIUNO, VEINTIDOS, VEINTITRES, VEINTICUATRO, VEINTICINCO, VEINTISEIS, VEINTISIETE, VEINTIOCHO, VEINTINUEVE, TREINTA, TREINTAYUNO, TREINTAYDOS, PEX1, PEX2, PEX3, fecha_formu, fecha_excl, ESTADO,num_donan);
 					if(ESTADO.equals("APTO")) {
@@ -648,6 +664,7 @@ public class ControlFormulario {
 							alert.setContentText("Lo sentimos, pero no puede realizar ninguna donación");
 							alert.showAndWait();
 						}
+					}
 					}
 			
 			this.VentanaFormulario.close();

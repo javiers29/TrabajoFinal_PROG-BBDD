@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
@@ -15,35 +17,37 @@
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>
             <Button fx:id="volvermenu" layoutX="4.0" layoutY="4.0" mnemonicParsing="false" onAction="#VolverMenu" text="VOLVER AL MENÚ" textFill="#145aa6" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="183.0" layoutY="3.0" prefHeight="53.0" prefWidth="305.0" text="DONACIONES" textFill="#4bbc2c" underline="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="189.0" layoutY="3.0" prefHeight="53.0" prefWidth="305.0" text="DONACIONES" textFill="#4bbc2c" underline="true">
                <font>
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label layoutX="49.0" layoutY="78.0" text="Nº Donación" />
-            <Label layoutX="49.0" layoutY="111.0" text="Cod_Colecta" />
-            <Label layoutX="49.0" layoutY="143.0" text="Tipo" />
-            <Label layoutX="49.0" layoutY="176.0" text="Pulso" />
-            <Label layoutX="49.0" layoutY="211.0" text="TA_sist" />
-            <Label layoutX="49.0" layoutY="246.0" text="TA_diast" />
-            <Label layoutX="320.0" layoutY="78.0" text="Hb_cap" />
-            <Label layoutX="320.0" layoutY="111.0" text="Hb_ven" />
-            <Label layoutX="320.0" layoutY="143.0" text="Fecha" />
-            <DatePicker fx:id="fecha" layoutX="374.0" layoutY="139.0" />
-            <TextField fx:id="num_donacion" layoutX="125.0" layoutY="74.0" />
-            <TextField fx:id="cod_colecta" layoutX="125.0" layoutY="107.0" />
-            <TextField fx:id="tipo" layoutX="125.0" layoutY="139.0" />
-            <TextField fx:id="pulso" layoutX="125.0" layoutY="172.0" />
-            <TextField fx:id="ta_sist" layoutX="125.0" layoutY="207.0" />
-            <TextField fx:id="ta_diast" layoutX="125.0" layoutY="242.0" />
-            <TextField fx:id="hb_cap" layoutX="374.0" layoutY="74.0" />
-            <TextField fx:id="hb_ven" layoutX="374.0" layoutY="107.0" />
-            <Button fx:id="guardar_donacion" layoutX="361.0" layoutY="220.0" mnemonicParsing="false" onAction="#GuardarDonacion" prefHeight="53.0" prefWidth="305.0" text="GUARDAR DONACIÓN" textFill="#39cd25">
+            <Label layoutX="16.0" layoutY="67.0" text="Nº Donación" />
+            <Label layoutX="16.0" layoutY="100.0" text="Cod_Colecta" />
+            <Label layoutX="16.0" layoutY="132.0" text="Tipo" />
+            <Label layoutX="16.0" layoutY="165.0" text="Pulso" />
+            <Label layoutX="16.0" layoutY="200.0" text="TA_sist" />
+            <Label layoutX="16.0" layoutY="235.0" text="TA_diast" />
+            <Label layoutX="287.0" layoutY="67.0" text="Hb_cap" />
+            <Label layoutX="287.0" layoutY="100.0" text="Hb_ven" />
+            <Label layoutX="294.0" layoutY="132.0" text="Fecha" />
+            <DatePicker fx:id="fecha" layoutX="341.0" layoutY="128.0" />
+            <TextField fx:id="num_donacion" layoutX="92.0" layoutY="63.0" />
+            <TextField fx:id="cod_colecta" layoutX="92.0" layoutY="96.0" />
+            <TextField fx:id="pulso" layoutX="92.0" layoutY="161.0" />
+            <TextField fx:id="ta_sist" layoutX="92.0" layoutY="196.0" />
+            <TextField fx:id="ta_diast" layoutX="92.0" layoutY="231.0" />
+            <TextField fx:id="hb_cap" layoutX="341.0" layoutY="63.0" />
+            <TextField fx:id="hb_ven" layoutX="341.0" layoutY="96.0" />
+            <Button fx:id="guardar_donacion" layoutX="527.0" layoutY="201.0" mnemonicParsing="false" onAction="#GuardarDonacion" prefHeight="68.0" prefWidth="174.0" text="GUARDAR DONACIÓN" textFill="#39cd25">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Button>
-            <Label layoutX="288.0" layoutY="179.0" text="Nº Donante" />
-            <TextField fx:id="num_donante" layoutX="374.0" layoutY="175.0" />
+            <Label layoutX="263.0" layoutY="168.0" text="Nº Donante" />
+            <Label layoutX="257.0" layoutY="200.0" text="G. Sanguineo" />
+            <ComboBox fx:id="grupo_sang" layoutX="341.0" layoutY="196.0" prefWidth="150.0" />
+            <ComboBox fx:id="tipo" layoutX="92.0" layoutY="128.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="num_donante" layoutX="341.0" layoutY="164.0" prefWidth="150.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>

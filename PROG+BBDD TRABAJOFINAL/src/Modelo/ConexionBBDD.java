@@ -75,7 +75,7 @@ public class ConexionBBDD {
 		 
 		Statement stm = conexion.createStatement();
 		//Preparo la sentencia SQL 
-		String selectsql= "SELECT * FROM BBDD1DAW.DONANTE";
+		String selectsql= "SELECT * FROM " +usr +".DONANTE";
 		
 		//ejecuto sentencia
 		try {
@@ -388,7 +388,60 @@ public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 		return listadonacion;
 	}
 
+public void NuevaDonacion(Integer num_don,Integer cod_col,String tipo,Integer pulso,Integer ta_sist,Integer ta_diast,Integer hb_cap, Integer hb_ven,String fecha,String grupo_sang,Integer num_donan) {
+	ConexionBBDD conn = new ConexionBBDD();
+	String insertdonacion;
+	try {
+	insertdonacion = "INSERT INTO " + usr +".DONACION VALUES ("+num_don+","+cod_col+",'"+tipo+"',"+pulso+","+ta_sist+","+ta_diast+","+hb_cap+","+hb_ven+",'"+fecha+"','"+grupo_sang+"')";
+	
+	Statement stm = conn.conexion.createStatement();
+	int resultado = stm.executeUpdate(insertdonacion);
+	if(resultado == 1) {
+		String insertRellena = "INSERT INTO " + usr +".REALIZA VALUES ("+num_donan+","+num_don+")";
+		stm = conn.conexion.createStatement();
+		stm.executeUpdate(insertRellena);
+		/*pstmt.setInt(1, cod_form);
+		pstmt.setInt(2, num_donante);
+		*/
+		Alert alert1 = new Alert (AlertType.INFORMATION);
+		  alert1.setTitle("DONACIÓN GUARDADA CORRECTAMENTE");
+		  alert1.setContentText("La nueva donación se ha añadido correctamente a la base de datos, tambien se ha actualizado la tabla relación.");
+		  alert1.showAndWait();
+	}else {
+		
+		Alert alert1 = new Alert (AlertType.INFORMATION);
+		  alert1.setTitle("ERROR");
+		  alert1.setContentText("Se ha producido un error en la inserción de datos.");
+		  alert1.showAndWait();
+	}}catch(SQLException sqle){
+		System.out.println(sqle.toString());
+	}
+}
 
+
+public ObservableList<Integer> SelectNumDonantes() throws SQLException{
+	ObservableList<Integer> listaDonantes = FXCollections.observableArrayList();
+	Statement stm= conexion.createStatement();
+	String selectdonante= "SELECT NUM_DONANTE FROM " +usr+ ".DONANTE";
+	
+	ResultSet resultado = stm.executeQuery(selectdonante);
+	
+	try {
+		while(resultado.next()) {
+			int num_donante = resultado.getInt(1);
+			listaDonantes.add(num_donante);
+		}
+	}catch(SQLException sqle){
+		int pos= sqle.getMessage().indexOf(":");
+		String codeErrorSQL =sqle.getMessage().substring(0, pos);
+		
+		System.out.println(codeErrorSQL);
+	}
+	
+	
+	
+	return listaDonantes;
+}
 
 	//PANTALLA FORMULARIO
 	
@@ -397,7 +450,7 @@ public  ObservableList<Donacion>  MostrarTablaDonaciones() throws SQLException {
 	System.out.println(fecha_excl);
 	ConexionBBDD conn = new ConexionBBDD();
 	String insertformulario;
-	if(fecha_excl.equals("--")) {
+	if(ESTADO.equals("APTO")) {
 		insertformulario = "INSERT INTO " + usr +".FORMULARIO VALUES ("+cod_form+",'"+UNO+"','"+DOS+"','"+TRES+"','"+CUATRO+"','"+CINCO+"','"+SEIS+"','"+SIETE+"','"+OCHO+"','"+NUEVE+"','"+DIEZ+"','"+ONCE+"','"+DOCE+"','"+TRECE+"','"+CATORCE+"','"+QUINCE+"','"+DIECISEIS+"','"+DIECISIETE+"','"+DIECIOCHO+"','"+DIECINUEVE+"','"+VEINTE+"','"+VEINTIUNO+"','"+VEINTIDOS+"','"+VEINTITRES+"','"+VEINTICUATRO+"','"+VEINTICINCO+"','"+VEINTISEIS+"','"+VEINTISIETE+"','"+VEINTIOCHO+"','"+VEINTINUEVE+"','"+TREINTA+"','"+TREINTAYUNO+"','"+TREINTAYDOS+"','"+PEX1+"','"+PEX2+"','"+PEX3+"','"+fecha_formu+"',"+null+",'"+ESTADO+"',"+num_donante+")";
 	}else {
 		insertformulario = "INSERT INTO " + usr +".FORMULARIO VALUES ("+cod_form+",'"+UNO+"','"+DOS+"','"+TRES+"','"+CUATRO+"','"+CINCO+"','"+SEIS+"','"+SIETE+"','"+OCHO+"','"+NUEVE+"','"+DIEZ+"','"+ONCE+"','"+DOCE+"','"+TRECE+"','"+CATORCE+"','"+QUINCE+"','"+DIECISEIS+"','"+DIECISIETE+"','"+DIECIOCHO+"','"+DIECINUEVE+"','"+VEINTE+"','"+VEINTIUNO+"','"+VEINTIDOS+"','"+VEINTITRES+"','"+VEINTICUATRO+"','"+VEINTICINCO+"','"+VEINTISEIS+"','"+VEINTISIETE+"','"+VEINTIOCHO+"','"+VEINTINUEVE+"','"+TREINTA+"','"+TREINTAYUNO+"','"+TREINTAYDOS+"','"+PEX1+"','"+PEX2+"','"+PEX3+"','"+fecha_formu+"','"+fecha_excl+"','"+ESTADO+"',"+num_donante+")";
